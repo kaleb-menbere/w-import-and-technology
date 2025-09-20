@@ -1,6 +1,7 @@
 import "./Kidopia.css"; 
-import Header from "./Header";
-import Hero from "./Hero"; 
+import Header from "./Header/Header";
+import Hero from "./Hero/Hero"; 
+import Box from "./Box/Box"; 
 
 
 function Kidopia() {
@@ -11,6 +12,7 @@ function Kidopia() {
    {/* Header */}
       <Header />
       <Hero />
+      <Box />
 
 </div>
   )

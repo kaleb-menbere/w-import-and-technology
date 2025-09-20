@@ -1,12 +1,18 @@
 .header {
-    background: #8DC63F; /* green background */
-    height: 100%;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    border-bottom: 3px solid white;
-  }
-  
+  background: #8DC63F; /* green background */
+  height: 16vh; /* set a fixed height instead of 100% */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 3px solid white;
+  position: fixed;   /* fix it at the top */
+  top: 0;            /* align to top */
+  left: 0;
+  z-index: 999;     /* stay above other content */
+}
+
+
+
   .nav-shell {
     display: flex;
     align-items: center;
@@ -21,9 +27,9 @@
   }
   
   .cap img {
-    height: 100%;        /* slightly taller than the header height */
+    height: 16vh;        /* slightly taller than the header height */
     width: auto;         /* keeps the aspect ratio */
-    max-height: 300px;   /* prevent it from overflowing too much */
+    max-height: 16vh;   /* prevent it from overflowing too much */
     object-fit: contain;
     margin: 0;
     padding: 0;

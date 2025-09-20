@@ -1,14 +1,15 @@
 /* ---------- Hero ---------- */
 .hero {
-    background: #8DC63F;
-    min-height: 600px; /* increased height */
-    display: flex;
-    align-items: center;
-    padding: 50px 30px 50px 50px;
-    color: #fff;
-    position: relative;
-  }
-  
+  background: #8DC63F;
+  min-height: 600px; /* increased height */
+  display: flex;
+  align-items: center;
+  color: #fff;
+  position: relative;
+  padding: 120px 30px 50px 20px; /* top, right, bottom, left */
+  margin-top: 560px;
+}
+
 
   
   .hero-inner {
@@ -43,7 +44,7 @@
     font-size: 30px;
     background: #98CC52;
     border: 1px solid #fff;
-    border-radius: 25px;
+    border-radius: 40px;
     padding: 15px 30px;
     margin-left: 40px;
     color: #ffffff;
@@ -52,10 +53,19 @@
     cursor: pointer;
     transition: transform 0.2s ease;
   }
-  .btn i {
-    font-size: 16px;
-    vertical-align: middle;
-  }
+.play-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  margin-left: 8px;
+  border-radius: 50%;
+  border: 1px solid #fff;      /* white circle */
+  color: #fff;        /* green icon */
+  font-size: 15px;       /* icon size */
+}
+
   
   .hero-cta .btn:hover {
     transform: translateY(-2px);

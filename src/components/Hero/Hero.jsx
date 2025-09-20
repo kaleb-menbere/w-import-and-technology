@@ -1,4 +1,6 @@
     import './Hero.css';
+    import { FaPlay } from "react-icons/fa";
+
 
     function Hero() {
     return ( 
@@ -25,7 +27,9 @@
                 data-am="አሁኑኑ ይጫወቱ"
             >
                 Play Now
-                <i className="fa-solid fa-play" style={{ marginRight: "8px" }}></i>
+                <span className="play-icon">
+                    <FaPlay />
+                </span>
             </a>
             {/* <a class="btn alt" href="#">Browse Games</a> */}
             </div>
