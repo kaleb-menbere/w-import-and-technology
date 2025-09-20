@@ -1,0 +1,120 @@
+.header {
+    background: #8DC63F; /* green background */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-bottom: 3px solid white;
+  }
+  
+  .nav-shell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  /* Caps with logos */
+  .cap {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cap img {
+    height: 100%;        /* slightly taller than the header height */
+    width: auto;         /* keeps the aspect ratio */
+    max-height: 300px;   /* prevent it from overflowing too much */
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+}
+
+  
+  /* Center nav links */
+  .green-bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    height: 100%;
+    padding-top: 20px;
+    align-items: center;
+  }
+  
+  .green-bar a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 25px;
+    padding: 0 10px;
+    transition: color 0.3s;
+  }
+  
+  .green-bar a:hover,
+  .green-bar a.active {
+    color: #000;
+  }
+  
+  /* Dropdown */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropbtn {
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: #ffffff;
+    min-width: 180px;
+    border: 1px solid #fff;
+    border-radius: 4px ;
+    overflow: hidden;
+    z-index: 100;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 10px 14px;
+    color: #8DC63F;
+  }
+  
+  .dropdown-content a:hover {
+    color: #fff;
+    background: #8DC63F;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      padding: 10px 0;
+    }
+  
+    .nav-shell {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    .cap img {
+      max-height: 70px;
+    }
+  
+    .green-bar {
+      flex-direction: column;
+      gap: 12px;
+      padding: 10px 0;
+    }
+  }
+  

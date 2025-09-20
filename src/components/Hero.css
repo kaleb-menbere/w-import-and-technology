@@ -1,0 +1,88 @@
+/* ---------- Hero ---------- */
+.hero {
+    background: #8DC63F;
+    min-height: 600px; /* increased height */
+    display: flex;
+    align-items: center;
+    padding: 50px 30px 50px 50px;
+    color: #fff;
+    position: relative;
+  }
+  
+
+  
+  .hero-inner {
+    display: flex;
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .hero-copy {
+    flex: 1;
+  }
+  
+  .hero-copy h1 {
+    font-size: 80px; /* increased size */
+    font-weight: 800;
+    text-transform: uppercase;
+    font-family: 'roboto', sans-serif;
+    margin-bottom: 25px;
+  }
+  
+  .hero-copy p {
+    font-size: 25px; /* increased size */
+    line-height: 1.6;
+    font-family: 'roboto', sans-serif;
+    margin-bottom: 40px;
+  }
+  
+  .hero-cta .btn {
+    font-size: 30px;
+    background: #98CC52;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    padding: 15px 30px;
+    margin-left: 40px;
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .btn i {
+    font-size: 16px;
+    vertical-align: middle;
+  }
+  
+  .hero-cta .btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  .hero-art {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .hero-art img {
+    max-width: 100%;
+    height: auto;
+    
+  }
+  
+  /* Responsive: stack text and image on small screens */
+  @media (max-width: 980px) {
+    .hero-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .hero-art {
+      margin-top: 30px;
+    }
+  }
+  
