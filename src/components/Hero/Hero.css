@@ -1,13 +1,13 @@
 /* ---------- Hero ---------- */
 .hero {
   background: #8DC63F;
+ 
   min-height: 600px; /* increased height */
   display: flex;
   align-items: center;
   color: #fff;
   position: relative;
-  padding: 120px 30px 50px 20px; /* top, right, bottom, left */
-  margin-top: 560px;
+  padding: 0 30px 50px 20px; /* top, right, bottom, left */
 }
 
 
