@@ -1,25 +1,23 @@
-import "./Kidopia.css"; 
+import "./Kidopia.css";
 import Header from "./Header/Header";
-import Hero from "./Hero/Hero"; 
-import Box from "./Box/Box"; 
-import About from "./About/About";
+import Home from "./Home/Home";
+import Footer from "./Footer/Footer";
+import Category from "./Category/Category";
 
 function Kidopia() {
 
   return (
-   
-<div className="fullscreen">
-   {/* Header */}
+
+    <div >
+      {/* Header */}
       <Header />
       <main>
-      <Hero />
-      <Box />
-     <About />
-     <Box />
+        <Home />
+        <Category/>
       </main>
+      <Footer />
 
-
-</div>
+    </div>
   )
 }
 
