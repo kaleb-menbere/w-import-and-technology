@@ -1,65 +1,129 @@
 /* Section Titles */
 .section-title {
-    color: #85c443;
-    font-size: 25px;
-    font-weight: 200;
-    margin: 10px 20px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-    gap: 12px;
-  }
-  
-  .section-title2 {
-    color: #fff;
-    font-size: 25px;
-    font-weight: 200;
-    margin: 10px 20px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-    gap: 12px;
-  }
-  
-  .section-title-h2 {
-    color: #fff;
-    font-size: 2.7rem !important; /* bigger size */
-    font-weight: 700 !important;
-    font-style: 'chakra-petch' !important;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    line-height: 1.1;
-  }
-  
-  
-  
-  .see-all {
-    font-size: 20px;
-    color: #c6ffa4;
-  }
-  
-  .see-all2 {
-    font-size: clamp(12px, 1.6vw, 13px);
-    color: #fff;
-  }
-  
-  .see-all:hover {
-    text-decoration: underline;
-    color: #fff;
+  color: #85c443;
+  font-size: 25px;
+  font-weight: 200;
+  margin: 10px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.section-title2 {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 200;
+  margin: 10px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.section-title-h2 {
+  color: #fff;
+  font-size: 2.7rem !important; /* bigger size */
+  font-weight: 700 !important;
+  font-family: 'Chakra Petch', sans-serif !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.1;
+  margin: 0; /* Remove default margin */
+}
+
+/* Section Header - NEW - This is the container for title + see-all */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 20px 20px;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.see-all {
+  font-size: 20px;
+  color: #c6ffa4;
+  margin-left: auto; /* This pushes it to the right */
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.see-all2 {
+  font-size: clamp(12px, 1.6vw, 13px);
+  color: #fff;
+}
+
+.see-all:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.games {
+  background: #111;
+  color: #fff;
+  padding: 60px 130px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .game-grid {
+      grid-template-columns: repeat(3, 1fr);
   }
   
   .games {
-    background: #111;
-    color: #fff;
-    padding: 60px 130px;
+      padding: 50px 80px;
   }
-  
+}
+
+@media (max-width: 768px) {
   .game-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+      grid-template-columns: repeat(2, 1fr);
   }
   
+  .games {
+      padding: 40px 30px;
+  }
+  
+  .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+  }
+  
+  .see-all {
+      margin-left: 0;
+      align-self: flex-end;
+  }
+  
+  .section-title-h2 {
+      font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .games {
+      padding: 30px 20px;
+  }
+  
+  .section-title-h2 {
+      font-size: 1.8rem !important;
+  }
+  
+  .see-all {
+      font-size: 16px;
+  }
+}
