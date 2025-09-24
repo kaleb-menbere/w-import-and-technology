@@ -1,0 +1,77 @@
+/* Mobile Category Section */
+@media (max-width: 768px) {
+    .category-container {
+        padding: 15px 10px;
+    }
+    
+    .category-title {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 5px;
+    }
+    
+    .game-card {
+        margin-bottom: 10px;
+    }
+    
+    .game-card img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+    }
+    
+    .game-card h3 {
+        font-size: 14px;
+        padding: 8px 5px;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .category-container {
+        padding: 10px 5px;
+    }
+    
+    .category-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 0;
+    }
+    
+    .game-card img {
+        height: 150px;
+    }
+    
+    .game-card h3 {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* Very Small Devices */
+@media (max-width: 320px) {
+    .category-title {
+        font-size: 18px;
+    }
+    
+    .game-card img {
+        height: 120px;
+    }
+    
+    .game-card h3 {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

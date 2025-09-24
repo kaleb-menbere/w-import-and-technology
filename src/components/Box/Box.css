@@ -1,129 +1,246 @@
-/* Section Titles */
-.section-title {
-  color: #85c443;
-  font-size: 25px;
-  font-weight: 200;
-  margin: 10px 20px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-  gap: 12px;
-}
-
-.section-title2 {
-  color: #fff;
-  font-size: 25px;
-  font-weight: 200;
-  margin: 10px 20px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-  gap: 12px;
-}
-
-.section-title-h2 {
-  color: #fff;
-  font-size: 2.7rem !important; /* bigger size */
-  font-weight: 700 !important;
-  font-family: 'Chakra Petch', sans-serif !important;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  line-height: 1.1;
-  margin: 0; /* Remove default margin */
-}
-
-/* Section Header - NEW - This is the container for title + see-all */
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 20px 20px;
-  margin-bottom: 14px;
-  gap: 12px;
-}
-
-.see-all {
-  font-size: 20px;
-  color: #c6ffa4;
-  margin-left: auto; /* This pushes it to the right */
-  white-space: nowrap; /* Prevents text wrapping */
-}
-
-.see-all2 {
-  font-size: clamp(12px, 1.6vw, 13px);
-  color: #fff;
-}
-
-.see-all:hover {
-  text-decoration: underline;
-  color: #fff;
-}
-
-.games {
-  background: #111;
-  color: #fff;
-  padding: 60px 130px;
-}
-
-.game-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .game-grid {
-      grid-template-columns: repeat(3, 1fr);
+  /* Section Titles */
+  .section-title {
+    color: #85c443;
+    font-size: 25px;
+    font-weight: 200;
+    margin: 10px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 12px;
   }
-  
+
+  .section-title2 {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 200;
+    margin: 10px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+
+  .section-title-h2 {
+    color: #fff;
+    font-size: 2.7rem !important; /* bigger size */
+    font-weight: 700 !important;
+    font-family: 'Chakra Petch', sans-serif !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.1;
+    margin: 0; /* Remove default margin */
+  }
+
+  /* Section Header - NEW - This is the container for title + see-all */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 20px 20px;
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+
+  .see-all {
+    font-size: 20px;
+    color: #c6ffa4;
+    margin-left: auto; /* This pushes it to the right */
+    white-space: nowrap; /* Prevents text wrapping */
+  }
+
+  .see-all2 {
+    font-size: clamp(12px, 1.6vw, 13px);
+    color: #fff;
+  }
+
+  .see-all:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+
   .games {
-      padding: 50px 80px;
+    background: #111;
+    color: #fff;
+    padding: 60px 130px;
   }
-}
 
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+
+
+  
+  /* Mobile Box Section - Enhanced Responsive Design */
 @media (max-width: 768px) {
-  .game-grid {
-      grid-template-columns: repeat(2, 1fr);
+  .games {
+      padding: 30px 20px !important;
   }
   
-  .games {
-      padding: 40px 30px;
+  .section-title {
+      font-size: 20px;
+      margin: 10px 0 15px 0;
+      justify-content: center;
+      text-align: center;
+  }
+  
+  .section-title2 {
+      font-size: 20px;
+      margin: 10px 0 15px 0;
+      justify-content: center;
+      text-align: center;
   }
   
   .section-header {
       flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-  }
-  
-  .see-all {
-      margin-left: 0;
-      align-self: flex-end;
+      align-items: center;
+      gap: 15px;
+      margin: 10px 0 20px 0;
+      text-align: center;
   }
   
   .section-title-h2 {
       font-size: 2rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .game-grid {
-      grid-template-columns: 1fr;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      gap: 8px;
   }
   
-  .games {
-      padding: 30px 20px;
-  }
-  
-  .section-title-h2 {
-      font-size: 1.8rem !important;
+  .section-title-h2 .clr {
+      margin-right: 0;
+      font-size: 24px;
+      margin-bottom: 5px;
   }
   
   .see-all {
       font-size: 16px;
+      margin-left: 0;
+      align-self: center;
+      padding: 8px 20px;
+      background: rgba(198, 255, 164, 0.1);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+  }
+  
+  .see-all2 {
+      font-size: 14px;
+  }
+  
+  .game-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+  }
+  
+  .see-all:hover {
+      background: rgba(198, 255, 164, 0.2);
+      transform: translateY(-2px);
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .games {
+      padding: 20px 15px !important;
+  }
+  
+  .section-title {
+      font-size: 18px;
+      margin-bottom: 12px;
+  }
+  
+  .section-title2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+  }
+  
+  .section-header {
+      gap: 12px;
+      margin-bottom: 15px;
+  }
+  
+  .section-title-h2 {
+      font-size: 1.7rem !important;
+      gap: 6px;
+  }
+  
+  .section-title-h2 .clr {
+      font-size: 22px;
+  }
+  
+  .see-all {
+      font-size: 15px;
+      padding: 7px 18px;
+  }
+  
+  .see-all2 {
+      font-size: 13px;
+  }
+  
+  .game-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+  }
+}
+
+/* Very Small Devices */
+@media (max-width: 320px) {
+  .games {
+      padding: 15px 10px !important;
+  }
+  
+  .section-title {
+      font-size: 16px;
+  }
+  
+  .section-title2 {
+      font-size: 16px;
+  }
+  
+  .section-title-h2 {
+      font-size: 1.5rem !important;
+  }
+  
+  .section-title-h2 .clr {
+      font-size: 20px;
+  }
+  
+  .see-all {
+      font-size: 14px;
+      padding: 6px 16px;
+  }
+}
+
+/* Tablet Optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .game-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+  }
+  
+  .games {
+      padding: 40px 60px !important;
+  }
+  
+  .section-title-h2 {
+      font-size: 2.3rem !important;
+  }
+}
+
+/* Touch Device Improvements */
+@media (hover: none) and (pointer: coarse) {
+  .see-all:hover {
+      background: rgba(198, 255, 164, 0.1);
+      transform: none;
+  }
+  
+  .see-all:active {
+      background: rgba(198, 255, 164, 0.2);
+      transform: translateY(-1px);
   }
 }

@@ -7,7 +7,6 @@
     gap: 50px;
     flex-wrap: wrap;
     min-height: 100px;
-    padding: 40px 10px;
 }
 
 .about img {
@@ -20,6 +19,7 @@
 .about-text {
     flex: 1;
     padding-right: 3%;
+    padding: 40px 10px;
 }
 
 .about-text h2 {
@@ -35,4 +35,72 @@
     font-size: 30px;
     line-height: 1.5;
     font-family: 'Poppins', sans-serif;
+}
+
+/* Mobile About Section */
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .about img {
+        width: 90%;
+        height: auto;
+        padding-left: 0;
+        margin: 0 auto;
+        order: 1; /* Image comes first */
+    }
+
+    .about-text {
+        flex: none;
+        width: 90%;
+        padding: 20px 0;
+        order: 2; /* Text comes after image */
+    }
+
+    .about-text h2 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .about-text p {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .about-kidopia {
+        font-size: 16px !important;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .about {
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    .about img {
+        width: 95%;
+    }
+
+    .about-text {
+        width: 95%;
+        padding: 15px 0;
+    }
+
+    .about-text h2 {
+        font-size: 28px;
+    }
+
+    .about-text p {
+        font-size: 16px;
+    }
+
+    .about-kidopia {
+        font-size: 14px !important;
+    }
 }
