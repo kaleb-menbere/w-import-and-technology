@@ -2,7 +2,7 @@
 .hero {
   background: #8DC63F;
 
-  min-height: 600px;
+  min-height: 90%;
   /* increased height */
   display: flex;
   align-items: center;
@@ -33,7 +33,7 @@
   font-weight: 800;
   text-transform: uppercase;
   font-family: 'roboto', sans-serif;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .hero-copy p {
@@ -41,7 +41,7 @@
   /* increased size */
   line-height: 1.6;
   font-family: 'roboto', sans-serif;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .hero-cta .btn {

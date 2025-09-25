@@ -1,21 +1,10 @@
   /* Section Titles */
   .section-title {
     color: #85c443;
-    font-size: 25px;
-    font-weight: 200;
+    font-size: 30px;
+    font-weight: 300;
     margin: 10px 20px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-    gap: 12px;
-  }
-
-  .section-title2 {
-    color: #fff;
-    font-size: 25px;
-    font-weight: 200;
-    margin: 10px 20px 20px;
+    font-family: 'Chakra Petch', sans-serif !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,13 +78,6 @@
       text-align: center;
   }
   
-  .section-title2 {
-      font-size: 20px;
-      margin: 10px 0 15px 0;
-      justify-content: center;
-      text-align: center;
-  }
-  
   .section-header {
       flex-direction: column;
       align-items: center;
@@ -154,11 +136,6 @@
       margin-bottom: 12px;
   }
   
-  .section-title2 {
-      font-size: 18px;
-      margin-bottom: 12px;
-  }
-  
   .section-header {
       gap: 12px;
       margin-bottom: 15px;
@@ -198,9 +175,6 @@
       font-size: 16px;
   }
   
-  .section-title2 {
-      font-size: 16px;
-  }
   
   .section-title-h2 {
       font-size: 1.5rem !important;
