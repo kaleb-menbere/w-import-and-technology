@@ -10,31 +10,38 @@ const categoryConfig = {
     name: "Action",
     title: "ACTION PACKED –----",
     icon: FaFistRaised,
-    color: "#ff8c42"
+    iconColor: "#ff8c42",
+    backgroundColor : "#000"
   },
   adventure: {
     name: "Adventure",
     title: "CHASE THE QUEST –----",
     icon: FaHiking,
-    color: "#85c443"
+    iconColor: "#85c443",
+    backgroundColor : "#000",
   },
   puzzle: {
     name: "Puzzle",
     title: "CRACK THE CODE –----",
     icon: FaPuzzlePiece,
-    color: "#ff6b6b"
+    iconColor: "#ff6b6b",
+    backgroundColor : "#85c443",
+    textColor : "#000"
   },
   sports: {
     name: "Sports",
     title: "SPORTS CHALLENGE –----",
     icon: FaFootballBall,
-    color: "#4ecdc4"
+    iconColor: "#4ecdc4",
+    backgroundColor : "#000",
   },
   arcade: {
     name: "Arcade",
     title: "ARCADE FUN –----",
     icon: FaGamepad,
-    color: "#ffd93d"
+    iconColor: "#ffd93d",
+    backgroundColor : "#85c443",
+    textColor : "#000"
   }
 };
 
@@ -81,7 +88,7 @@ function Box({ categoryName, showAllGames = false }) {
     color: "#ff8c42"
   };
 
-  const { name, title, icon: IconComponent, color } = category;
+  const { name, title, icon: IconComponent, iconColor, backgroundColor, textColor } = category;
 
   // If showAllGames is true (category page), show all games. If false (homepage), show limited games.
   const allGames = gameData[categoryKey] || [];
@@ -93,12 +100,12 @@ function Box({ categoryName, showAllGames = false }) {
   };
 
   return (
-    <section className="games">
-      <h2 className="section-title">{title}</h2>
+    <section className="games" style={{ backgroundColor: backgroundColor }}>
+      <h2 className="section-title" style={{ color: textColor }}>{title}</h2>
 
-      <div className="section-header">
-        <h2 className="section-title-h2">
-          <IconComponent className="clr" style={{ color, marginRight: "8px" }} />
+      <div className="section-header" >
+        <h2 className="section-title-h2" style={{ color: textColor }}>
+          <IconComponent className="clr" style={{ color: iconColor, marginRight: "8px" }} />
           {name}
         </h2>
 

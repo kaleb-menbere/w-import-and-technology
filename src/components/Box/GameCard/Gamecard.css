@@ -17,7 +17,7 @@
 }
 
 .game-card p {
-  margin: 10px 0;
+  margin: 5px 0;
   margin-top: 15px;
   font-size: 25px;
   font-weight: 100;
@@ -38,7 +38,7 @@
   font-size: 15px;
   background: #98CC52;
   border-radius: 30px;
-  margin: 10px 25% 0 27%;
+  margin: 10px 27% 0 26%;
   padding: 10px 12px;
   color: #ffffff;
   font-weight: 400;

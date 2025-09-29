@@ -39,7 +39,6 @@ export const LanguageProvider = ({ children }) => {
       aboutDescription: "Play hundreds of high-quality games instantly — no downloads, no waiting, just pure fun. Fast, sleek, and built for any device, KIDOPIA turns every moment into a gaming adventure.",
       privacyPolicy: "Privacy Policy",
       termsConditions: "Terms & Conditions",
-      contactUs: "Contact Us",
       faq: "FAQ",
       copyright: "© ETHIO TELECOM KIDOPIA 2025, ALL RIGHTS RESERVED",
       // Banner
@@ -102,7 +101,6 @@ export const LanguageProvider = ({ children }) => {
       aboutDescription: "በመቶዎች የሚቆጠሩ ከፍተኛ ጥራት ያላቸውን ጨዋታዎችን በቅጽበት ይጫወቱ - ምንም ማውረድ፣ መጠበቅ የለም፣ ንጹህ አዝናኝ ብቻ። ፈጣን፣ ቄንጠኛ እና ለማንኛውም መሳሪያ የተሰራ KIDOPIA እያንዳንዱን አፍታ ወደ የጨዋታ ጀብዱነት ይቀየራል።",
       privacyPolicy: "የግለሰቦች ፖሊሲ",
       termsConditions: "ውሎች እና ሁኔታዎች",
-      contactUs: "ያግኙን",
       faq: "FAQ", // You can add Amharic translation if needed
       copyright: "© ኢትዮ ቴሌኮም KIDOPIA 2025፣ መብቱ በህግ የተጠበቀ ነው።",
       // Banner
