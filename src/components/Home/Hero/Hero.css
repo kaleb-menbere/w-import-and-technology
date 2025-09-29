@@ -86,6 +86,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  padding-left: 2rem;
 }
 
 .hero-art img {

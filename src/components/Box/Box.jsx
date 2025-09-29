@@ -101,13 +101,17 @@ function Box({ categoryName, showAllGames = false }) {
 
   return (
     <section className="games" style={{ backgroundColor: backgroundColor }}>
+      {/* Main section title */}
       <h2 className="section-title" style={{ color: textColor }}>{title}</h2>
 
-      <div className="section-header" >
-        <h2 className="section-title-h2" style={{ color: textColor }}>
-          <IconComponent className="clr" style={{ color: iconColor, marginRight: "8px" }} />
-          {name}
-        </h2>
+      {/* Header with icon, name, and see-all in one line */}
+      <div className="section-header">
+        <div className="title-container">
+          <IconComponent className="clr" style={{ color: iconColor }}  size="2em" />
+          <h2 className="section-title-h2" style={{ color: textColor }}>
+            {name}
+          </h2>
+        </div>
 
         {/* Show "See All" link that navigates to internal category page */}
         {!showAllGames && (

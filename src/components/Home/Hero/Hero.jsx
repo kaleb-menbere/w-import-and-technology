@@ -16,7 +16,7 @@ function Hero() {
                 {t('heroDescription')}
             </p>
             <div className="hero-cta">
-            <a
+            {/* <a
                 className="btn"
                 href="https://www.kidopia.et/Drr/ethtelco/kidopia_home.php#"
             >
@@ -24,7 +24,7 @@ function Hero() {
                 <span className="play-icon">
                     <FaPlay />
                 </span>
-            </a>
+            </a> */}
             {/* <a class="btn alt" href="#">Browse Games</a> */}
             </div>
         </div>
