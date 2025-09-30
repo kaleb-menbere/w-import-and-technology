@@ -112,7 +112,7 @@
     flex-direction: column;
     text-align: center;
     gap: 2.5rem;
-    padding: 1rem 0;
+    padding: 1rem 6%;
   }
   
   .hero-title {
@@ -146,6 +146,7 @@
   .hero-inner {
     max-width: 95%;
     gap: 2rem;
+    padding-left: 6%;
   }
   
   .hero-title {
@@ -188,6 +189,7 @@
   .hero-copy {
     order: 1;
     text-align: left;
+    margin-left: 6%;
   }
   
   .hero-art {
