@@ -1,40 +1,42 @@
 import './Hero.css';
 import { FaPlay } from "react-icons/fa";
-import { useLanguage } from '../../../contexts/LanguageContext.jsx'; // Adjust path as needed
+import { useLanguage } from '../../../contexts/LanguageContext.jsx';
 
 function Hero() {
     const { t } = useLanguage();
 
     return ( 
     <section className="hero">
-        <div className="container hero-inner">
-        <div className="hero-copy">
-            <h1>
-                {t('heroTitle')}
-            </h1>
-            <p>
-                {t('heroDescription')}
-            </p>
-            <div className="hero-cta">
-            {/* <a
-                className="btn"
-                href="https://www.kidopia.et/Drr/ethtelco/kidopia_home.php#"
-            >
-                {t('playNow')}
-                <span className="play-icon">
-                    <FaPlay />
-                </span>
-            </a> */}
-            {/* <a class="btn alt" href="#">Browse Games</a> */}
-            </div>
-        </div>
+        <div className="hero-container">
+            <div className="hero-inner">
+                <div className="hero-copy">
+                    <h1 className="hero-title">
+                        {t('heroTitle')}
+                    </h1>
+                    <p className="hero-description">
+                        {t('heroDescription')}
+                    </p>
+                    <div className="hero-cta">
+                    {/* <a
+                        className="btn"
+                        href="https://www.kidopia.et/Drr/ethtelco/kidopia_home.php#"
+                    >
+                        {t('playNow')}
+                        <span className="play-icon">
+                            <FaPlay />
+                        </span>
+                    </a> */}
+                    {/* <a class="btn alt" href="#">Browse Games</a> */}
+                    </div>
+                </div>
 
-        <div className="hero-art">
-            <img
-            src="/images/images.svg"
-            alt="Characters"
-            />
-        </div>
+                <div className="hero-art">
+                    <img
+                    src="/images/images.svg"
+                    alt="Characters"
+                    />
+                </div>
+            </div>
         </div>
     </section>
     );
