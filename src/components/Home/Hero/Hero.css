@@ -34,7 +34,7 @@
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 7vw, 5rem); /* Responsive, attractive size */
+  font-size: clamp(2rem, 5vw, 4rem); /* Reduced vw unit from 7vw to 5vw */
   font-weight: 800;
   text-transform: uppercase;
   font-family: 'roboto', sans-serif;
@@ -44,7 +44,7 @@
 }
 
 .hero-description {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem); /* Responsive, attractive size */
+  font-size: clamp(1rem, 1.8vw, 1.5rem); /* Reduced vw unit from 2.5vw to 1.8vw */
   line-height: 1.6;
   font-family: 'roboto', sans-serif;
   margin-bottom: 2.5rem;
