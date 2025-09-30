@@ -4,7 +4,7 @@ main {
   }
 @media (max-width: 768px) {
     main {
-        padding-top: 8vh; /* push content below the fixed header */
+        padding-top: 6vh; /* push content below the fixed header */
         width: 100%;
       } 
 }
