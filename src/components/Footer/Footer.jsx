@@ -10,9 +10,9 @@ function Footer() {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-links">
-          <a href="#" className="footer-link">
+          <Link to="/login" className="footer-link">
             {t('privacyPolicy')}
-          </a>
+          </Link>
           <Link to="/terms" className="footer-link">
             {t('termsConditions')}
           </Link>
