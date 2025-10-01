@@ -1,8 +1,8 @@
 /* ===== HERO SECTION ===== */
 .hero {
   background: #8DC63F;
-  min-height: 85vh;
-  height: 85vh;
+  min-height: 95vh;
+  height: 95vh;
   display: flex;
   align-items: center;
   color: #fff;
@@ -35,8 +35,8 @@
 }
 
 .hero-title {
-  font-size: clamp(1.5rem, 4.5vw, 3.5rem);
-  font-weight: 800;
+  font-size: clamp(1.2rem, 4.2vw, 3.2rem);
+  font-weight: 750;
   text-transform: uppercase; 
   font-family: 'roboto', sans-serif;
   margin-bottom: 1.5rem;

@@ -40,19 +40,7 @@
   padding: 0;
 }
 
-.rounded-right {
-  border-top-right-radius: 40px;  /* Top right corner */
-  border-top-left-radius: 0; /* Ensure left corners are square */
-  border-bottom-left-radius: 0; /* Ensure left corners are square */
-  display: block;
-  
-  /* Remove any default borders or backgrounds */
-  border: none;
-  background: transparent;
-  
-  /* Optional: Add padding if needed */
-  /* padding: 0; */
-}
+
 
 /* ===== DESKTOP NAVIGATION ===== */
 .green-bar {
