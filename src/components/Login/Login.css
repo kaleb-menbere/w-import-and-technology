@@ -1,487 +1,495 @@
-  
-  /* ===== Top Bar ===== */
-  .topbar {
-    background: var(--white);
-    padding: max(12px, env(safe-area-inset-top)) 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    position: relative;
-    z-index: 100;
+/* Kidopia Login Specific Styles */
+.kidopia-login-page {
+  --primary-green: #8dc63f;
+  --green-dark: #6ea52c;
+  --green-light: #a5d66d;
+  --white: #ffffff;
+  --text-dark: #333333;
+  --text-light: #666666;
+  --radius: 12px;
+  --radius-large: 20px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.kidopia-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* ===== Top Bar ===== */
+.kidopia-topbar {
+  background: var(--white);
+  padding: max(12px, env(safe-area-inset-top)) 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 100;
+}
+
+.kidopia-topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.kidopia-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kidopia-brand img {
+  height: clamp(32px, 4.2vw, 44px);
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.kidopia-brand img:hover {
+  transform: scale(1.05);
+}
+
+.kidopia-lang-btn {
+  border: 2px solid var(--primary-green);
+  background: var(--white);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--primary-green);
+  transition: all 0.3s ease;
+}
+
+.kidopia-lang-btn:hover {
+  background: var(--primary-green);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ===== Hero Section ===== */
+.kidopia-hero {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-dark) 100%);
+  padding: clamp(24px, 4vw, 48px) 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.kidopia-hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  width: 100%;
+}
+
+.kidopia-hero-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 3vw, 40px);
+  position: relative;
+}
+
+.kidopia-hero-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0px,
+    rgba(255, 255, 255, 0.1) 6px,
+    rgba(255, 255, 255, 0) 6px,
+    rgba(255, 255, 255, 0) 16px
+  );
+  border-radius: var(--radius-large);
+}
+
+.kidopia-hero-left img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 36px rgba(0, 0, 0, 0.3));
+  position: relative;
+  z-index: 1;
+  animation: kidopia-float 6s ease-in-out infinite;
+}
+
+@keyframes kidopia-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ===== Card Styles ===== */
+.kidopia-card {
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: var(--shadow-hover);
+  transition: transform 0.3s ease;
+}
+
+.kidopia-card:hover {
+  transform: translateY(-5px);
+}
+
+.kidopia-card-header {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-dark) 100%);
+  color: var(--white);
+  font-size: clamp(20px, 2.6vw, 24px);
+  font-weight: 700;
+  text-align: center;
+  padding: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+}
+
+.kidopia-card-inner {
+  background: var(--white);
+  padding: clamp(24px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.6vw, 20px);
+}
+
+/* ===== Login Container ===== */
+.kidopia-login-container {
+  width: 100%;
+  text-align: center;
+}
+
+.kidopia-login-container h2 {
+  font-size: clamp(24px, 3vw, 28px);
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.kidopia-login-container p {
+  font-size: clamp(14px, 1.6vw, 16px);
+  color: var(--text-light);
+  margin-bottom: 24px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ===== Form Elements ===== */
+.kidopia-input-group,
+.kidopia-otp-wrap {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--primary-green);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+
+.kidopia-input-group:focus-within,
+.kidopia-otp-wrap:focus-within {
+  border-color: var(--green-dark);
+  box-shadow: 0 0 0 3px rgba(141, 198, 63, 0.1);
+  transform: translateY(-2px);
+}
+
+.kidopia-input-group span {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-right: 8px;
+}
+
+.kidopia-input-group input,
+.kidopia-otp-wrap input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  color: var(--text-dark);
+  background: transparent;
+}
+
+.kidopia-input-group input::placeholder,
+.kidopia-otp-wrap input::placeholder {
+  color: #a0a0a0;
+}
+
+.kidopia-otp-wrap button {
+  background: none;
+  border: none;
+  color: var(--primary-green);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.kidopia-otp-wrap button:hover:not(:disabled) {
+  background: rgba(141, 198, 63, 0.1);
+  transform: translateY(-1px);
+}
+
+.kidopia-otp-wrap button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ===== Messages ===== */
+.kidopia-message {
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+  padding: 12px;
+  border-radius: var(--radius);
+  font-weight: 500;
+}
+
+.kidopia-error {
+  background: #fee;
+  color: #d32f2f;
+  border: 1px solid #f5c6cb;
+}
+
+.kidopia-success {
+  background: #f0fff4;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+/* ===== Consent ===== */
+.kidopia-consent-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px 0;
+  font-size: 14px;
+  color: var(--text-light);
+  text-align: left;
+  line-height: 1.4;
+}
+
+.kidopia-consent-line input[type="checkbox"] {
+  margin-top: 2px;
+  accent-color: var(--primary-green);
+  transform: scale(1.2);
+}
+
+.kidopia-consent-line a {
+  color: var(--primary-green);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.kidopia-consent-line a:hover {
+  color: var(--green-dark);
+  text-decoration: underline;
+}
+
+/* ===== Buttons ===== */
+.kidopia-btn-login {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-dark) 100%);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kidopia-btn-login:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.kidopia-btn-login:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.kidopia-freeTrial {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-top: 16px;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ===== Footer ===== */
+.kidopia-footer {
+  background: #2c2c2c;
+  color: var(--primary-green);
+  padding: 24px 0;
+}
+
+.kidopia-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.kidopia-foot-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.kidopia-foot-links a {
+  color: var(--primary-green);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  padding: 8px 0;
+}
+
+.kidopia-foot-links a:hover {
+  color: var(--green-light);
+  transform: translateY(-1px);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 968px) {
+  .kidopia-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
   }
   
-  .topbar-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .brand img {
-    height: clamp(32px, 4.2vw, 44px);
-    width: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-  }
-  
-  .brand img:hover {
-    transform: scale(1.05);
-  }
-  
-  .right-tools {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .lang-btn {
-    border: 2px solid var(--primary-green);
-    background: var(--white);
-    padding: 10px 20px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--primary-green);
-    transition: all 0.3s ease;
-  }
-  
-  .lang-btn:hover {
-    background: var(--primary-green);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-  }
-  
-  /* ===== Hero Section ===== */
-  .hero {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-dark) 100%);
-    padding: clamp(24px, 4vw, 48px) 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-  
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(24px, 4vw, 48px);
-    align-items: center;
-    width: 100%;
-  }
-  
-  .hero-left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(20px, 3vw, 40px);
-    position: relative;
-  }
-  
-  .hero-left::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: repeating-linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.1) 0px,
-      rgba(255, 255, 255, 0.1) 6px,
-      rgba(255, 255, 255, 0) 6px,
-      rgba(255, 255, 255, 0) 16px
-    );
-    border-radius: var(--radius-large);
-  }
-  
-  .hero-left img {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 12px 36px rgba(0, 0, 0, 0.3));
-    position: relative;
-    z-index: 1;
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  
-  /* ===== Card Styles ===== */
-  .card {
-    border-radius: var(--radius-large);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    max-width: 500px;
-    width: 100%;
+  .kidopia-hero-left {
+    order: 2;
+    max-width: 400px;
     margin: 0 auto;
-    box-shadow: var(--shadow-hover);
-    transition: transform 0.3s ease;
   }
   
-  .card:hover {
-    transform: translateY(-5px);
+  .kidopia-card {
+    order: 1;
+    max-width: 450px;
   }
   
-  .card-header {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-dark) 100%);
-    color: var(--white);
-    font-size: clamp(20px, 2.6vw, 24px);
-    font-weight: 700;
-    text-align: center;
-    padding: 20px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    letter-spacing: 0.5px;
+  .kidopia-hero-left img {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .kidopia-container {
+    padding: 0 16px;
   }
   
-  .card-inner {
-    background: var(--white);
-    padding: clamp(24px, 3vw, 32px);
-    display: flex;
+  .kidopia-topbar-inner {
     flex-direction: column;
-    gap: clamp(16px, 2.6vw, 20px);
-  }
-  
-  /* ===== Login Container ===== */
-  .login-container {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .login-container h2 {
-    font-size: clamp(24px, 3vw, 28px);
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text-dark);
-    text-align: center;
-  }
-  
-  .login-container p {
-    font-size: clamp(14px, 1.6vw, 16px);
-    color: var(--text-light);
-    margin-bottom: 24px;
-    line-height: 1.5;
-    text-align: center;
-  }
-  
-  /* ===== Form Elements ===== */
-  .input-group,
-  .otp-wrap {
-    display: flex;
-    align-items: center;
-    border: 2px solid var(--primary-green);
-    border-radius: var(--radius);
-    margin-bottom: 16px;
-    padding: 12px 16px;
-    background: var(--white);
-    transition: all 0.3s ease;
-  }
-  
-  .input-group:focus-within,
-  .otp-wrap:focus-within {
-    border-color: var(--green-dark);
-    box-shadow: 0 0 0 3px rgba(141, 198, 63, 0.1);
-    transform: translateY(-2px);
-  }
-  
-  .input-group span {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-right: 8px;
-  }
-  
-  .input-group input,
-  .otp-wrap input {
-    border: none;
-    outline: none;
-    flex: 1;
-    font-size: 16px;
-    color: var(--text-dark);
-    background: transparent;
-  }
-  
-  .input-group input::placeholder,
-  .otp-wrap input::placeholder {
-    color: #a0a0a0;
-  }
-  
-  .otp-wrap button {
-    background: none;
-    border: none;
-    color: var(--primary-green);
-    font-weight: 700;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    font-size: 14px;
-  }
-  
-  .otp-wrap button:hover:not(:disabled) {
-    background: rgba(141, 198, 63, 0.1);
-    transform: translateY(-1px);
-  }
-  
-  .otp-wrap button:disabled {
-    color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  /* ===== Messages ===== */
-  .message {
-    font-size: 14px;
-    margin-bottom: 16px;
-    text-align: center;
-    padding: 12px;
-    border-radius: var(--radius);
-    font-weight: 500;
-  }
-  
-  .error {
-    background: #fee;
-    color: #d32f2f;
-    border: 1px solid #f5c6cb;
-  }
-  
-  .success {
-    background: #f0fff4;
-    color: #2e7d32;
-    border: 1px solid #c8e6c9;
-  }
-  
-  /* ===== Consent ===== */
-  .consent-line {
-    display: flex;
-    align-items: flex-start;
     gap: 12px;
-    margin: 16px 0;
-    font-size: 14px;
-    color: var(--text-light);
-    text-align: left;
-    line-height: 1.4;
-  }
-  
-  .consent-line input[type="checkbox"] {
-    margin-top: 2px;
-    accent-color: var(--primary-green);
-    transform: scale(1.2);
-  }
-  
-  .consent-line a {
-    color: var(--primary-green);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  
-  .consent-line a:hover {
-    color: var(--green-dark);
-    text-decoration: underline;
-  }
-  
-  /* ===== Buttons ===== */
-  .btn-login {
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-dark) 100%);
-    border: none;
-    border-radius: var(--radius);
-    color: var(--white);
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
-  .btn-login:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-  }
-  
-  .btn-login:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
-  
-  .freeTrial {
-    font-size: 14px;
-    color: var(--text-light);
-    margin-top: 16px;
     text-align: center;
-    font-style: italic;
-    line-height: 1.4;
   }
   
-  /* ===== Footer ===== */
-  .footer {
-    background: #2c2c2c;
-    color: var(--primary-green);
-    padding: 24px 0;
+  .kidopia-hero {
+    padding: 20px 0;
   }
   
-  .footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .kidopia-card-inner {
+    padding: 20px;
+  }
+  
+  .kidopia-input-group,
+  .kidopia-otp-wrap {
+    padding: 10px 12px;
+  }
+  
+  .kidopia-footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .kidopia-foot-links {
+    justify-content: center;
     gap: 16px;
-    flex-wrap: wrap;
   }
   
-  .foot-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+  .kidopia-consent-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kidopia-lang-btn {
+    padding: 8px 16px;
+    font-size: 13px;
   }
   
-  .foot-links a {
-    color: var(--primary-green);
-    text-decoration: none;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    padding: 8px 0;
-  }
-  
-  .foot-links a:hover {
-    color: var(--green-light);
-    transform: translateY(-1px);
-  }
-  
-  .copy {
-    color: var(--primary-green);
-    white-space: nowrap;
+  .kidopia-input-group span {
     font-size: 14px;
   }
   
-  /* ===== Responsive Design ===== */
-  @media (max-width: 968px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      gap: 32px;
-      text-align: center;
-    }
-    
-    .hero-left {
-      order: 2;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    
-    .card {
-      order: 1;
-      max-width: 450px;
-    }
-    
-    .hero-left img {
-      max-width: 300px;
-    }
+  .kidopia-input-group input,
+  .kidopia-otp-wrap input {
+    font-size: 14px;
   }
   
-  @media (max-width: 640px) {
-    .container {
-      padding: 0 16px;
-    }
-    
-    .topbar-inner {
-      flex-direction: column;
-      gap: 12px;
-      text-align: center;
-    }
-    
-    .hero {
-      padding: 20px 0;
-    }
-    
-    .card-inner {
-      padding: 20px;
-    }
-    
-    .input-group,
-    .otp-wrap {
-      padding: 10px 12px;
-    }
-    
-    .footer-inner {
-      flex-direction: column;
-      text-align: center;
-      gap: 12px;
-    }
-    
-    .foot-links {
-      justify-content: center;
-      gap: 16px;
-    }
-    
-    .consent-line {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
+  .kidopia-otp-wrap {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
   }
   
-  @media (max-width: 480px) {
-    .lang-btn {
-      padding: 8px 16px;
-      font-size: 13px;
-    }
-    
-    .input-group span {
-      font-size: 14px;
-    }
-    
-    .input-group input,
-    .otp-wrap input {
-      font-size: 14px;
-    }
-    
-    .otp-wrap {
-      flex-direction: column;
-      gap: 10px;
-      align-items: stretch;
-    }
-    
-    .otp-wrap button {
-      align-self: flex-end;
-      padding: 6px 12px;
-    }
+  .kidopia-otp-wrap button {
+    align-self: flex-end;
+    padding: 6px 12px;
+  }
+}
+
+/* ===== Accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
   
-  /* ===== Accessibility ===== */
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-    
-    .hero-left img {
-      animation: none;
-    }
+  .kidopia-hero-left img {
+    animation: none;
   }
-  
-  /* ===== Focus Styles ===== */
-  button:focus-visible,
-  input:focus-visible,
-  a:focus-visible {
-    outline: 2px solid var(--primary-green);
-    outline-offset: 2px;
-  }
+}
+
+/* ===== Focus Styles ===== */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}

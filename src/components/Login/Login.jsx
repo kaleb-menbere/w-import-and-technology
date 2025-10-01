@@ -114,41 +114,25 @@ export default function LoginPage() {
   const t = i18n[lang];
 
   return (
-    <div className="page">
-      {/* ===== Header ===== */}
-      <header className="topbar">
-        <div className="container topbar-inner">
-          <div className="brand">
-            <img src="/images/ethio_logo.svg" alt="Ethio Telecom Logo" />
-          </div>
-          <button
-            onClick={() => setLang(lang === "en" ? "am" : "en")}
-            className="lang-btn"
-            aria-label="Switch language"
-          >
-            {lang === "en" ? "አማርኛ" : "English"}
-          </button>
-        </div>
-      </header>
-
+    <div className="kidopia-login-page">
       {/* ===== Hero Section ===== */}
-      <section className="hero">
-        <div className="container hero-inner">
-          <div className="hero-left">
+      <section className="kidopia-hero">
+        <div className="kidopia-container kidopia-hero-inner">
+          <div className="kidopia-hero-left">
             <img src="/images/images.svg" alt="Kidopia Characters" />
           </div>
           
-          <div className="card">
-            <div className="card-header">
+          <div className="kidopia-card">
+            <div className="kidopia-card-header">
               {t.welcome}
             </div>
-            <div className="card-inner">
-              <div className="login-container">
+            <div className="kidopia-card-inner">
+              <div className="kidopia-login-container">
                 <h2>{t.login}</h2>
                 <p>{t.description}</p>
 
                 {/* Phone Input */}
-                <div className="input-group">
+                <div className="kidopia-input-group">
                   <span>+251</span>
                   <input
                     type="tel"
@@ -160,7 +144,7 @@ export default function LoginPage() {
                 </div>
 
                 {/* OTP Input */}
-                <div className="otp-wrap">
+                <div className="kidopia-otp-wrap">
                   <input
                     type="text"
                     value={otp}
@@ -178,19 +162,19 @@ export default function LoginPage() {
                 </div>
 
                 {/* Messages */}
-                {messages.error && <div className="message error">{messages.error}</div>}
-                {messages.success && <div className="message success">{messages.success}</div>}
-                {messages.expire && <div className="message error">{messages.expire}</div>}
+                {messages.error && <div className="kidopia-message kidopia-error">{messages.error}</div>}
+                {messages.success && <div className="kidopia-message kidopia-success">{messages.success}</div>}
+                {messages.expire && <div className="kidopia-message kidopia-error">{messages.expire}</div>}
 
                 {/* Consent */}
-                <div className="consent-line">
+                <div className="kidopia-consent-line">
                   <input
                     type="checkbox"
-                    id="tnc-checkbox"
+                    id="kidopia-tnc-checkbox"
                     checked={agreeTnc}
                     onChange={(e) => setAgreeTnc(e.target.checked)}
                   />
-                  <label htmlFor="tnc-checkbox">
+                  <label htmlFor="kidopia-tnc-checkbox">
                     {t.consent}{" "}
                     <a href="/terms" target="_blank" rel="noopener noreferrer">
                       {t.terms}
@@ -200,14 +184,14 @@ export default function LoginPage() {
 
                 {/* Login Button */}
                 <button
-                  className="btn-login"
+                  className="kidopia-btn-login"
                   onClick={handleLogin}
                   disabled={!otpEnabled || !agreeTnc || otp.length !== 6}
                 >
                   {t.login_btn}
                 </button>
 
-                <p className="freeTrial">
+                <p className="kidopia-freeTrial">
                   {t.trial}
                 </p>
               </div>
@@ -215,17 +199,6 @@ export default function LoginPage() {
           </div>
         </div>
       </section>
-
-      {/* ===== Footer ===== */}
-      <footer className="footer">
-        <div className="container footer-inner">
-          <div className="foot-links">
-            <a href="/Terms">{lang === "en" ? "Terms & Conditions" : "ውሎች"}</a>
-            <a href="https://t.me/kiopia_et">{t.contact}</a>
-            <a href="tel:251970305059">{t.help}</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
