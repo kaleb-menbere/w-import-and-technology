@@ -11,7 +11,7 @@ function Footer() {
       <div className="footer-container">
         <div className="footer-links">
           <Link to="/login" className="footer-link">
-            {t('privacyPolicy')}
+            Login
           </Link>
           <Link to="/terms" className="footer-link">
             {t('termsConditions')}
