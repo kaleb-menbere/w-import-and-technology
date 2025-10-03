@@ -1,51 +1,52 @@
 import React from "react";
 import { FaHiking, FaPuzzlePiece, FaFootballBall, FaGamepad, FaFistRaised } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from '../../contexts/LanguageContext.jsx';
 import GameCard from "./GameCard/Gamecard";
 import "./Box.css";
 
 // Category configuration - titles and metadata
-const categoryConfig = {
+const getCategoryConfig = (t) => ({
   action: {
-    name: "Action",
-    title: "ACTION PACKED –----",
+    name: t('actionGames'),
+    title: t('actionTitle'),
     icon: FaFistRaised,
     iconColor: "#ff8c42",
-    backgroundColor : "#000"
+    backgroundColor: "#000"
   },
   adventure: {
-    name: "Adventure",
-    title: "CHASE THE QUEST –----",
+    name: t('adventureGames'),
+    title: t('adventureTitle'),
     icon: FaHiking,
     iconColor: "#85c443",
-    backgroundColor : "#000",
+    backgroundColor: "#000",
   },
   puzzle: {
-    name: "Puzzle",
-    title: "CRACK THE CODE –----",
+    name: t('puzzleGames'),
+    title: t('puzzleTitle'),
     icon: FaPuzzlePiece,
     iconColor: "#ff6b6b",
-    backgroundColor : "#85c443",
-    textColor : "#000"
+    backgroundColor: "#85c443",
+    textColor: "#000"
   },
   sports: {
-    name: "Sports",
-    title: "SPORTS CHALLENGE –----",
+    name: t('sportsGames'),
+    title: t('sportsTitle'),
     icon: FaFootballBall,
     iconColor: "#4ecdc4",
-    backgroundColor : "#000",
+    backgroundColor: "#000",
   },
   arcade: {
-    name: "Arcade",
-    title: "ARCADE FUN –----",
+    name: t('arcadeGames'),
+    title: t('arcadeTitle'),
     icon: FaGamepad,
     iconColor: "#ffd93d",
-    backgroundColor : "#85c443",
-    textColor : "#000"
+    backgroundColor: "#85c443",
+    textColor: "#000"
   }
-};
+});
 
-// Game data for each category
+// Game data for each category (no translation needed for game names unless you want to)
 const gameData = {
   action: [
     { name: "Potty Plan", img: "/images/gpotty_plan.jpg", link: "https://www.kidopia.et/esportsmix/content/Action/game1.html" },
@@ -74,16 +75,18 @@ const gameData = {
 
 function Box({ categoryName, showAllGames = false }) {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   console.log("Box received categoryName:", categoryName);
 
   // Use lowercase for consistency
   const categoryKey = categoryName?.toLowerCase() || "action";
 
-  // Get category configuration
+  // Get category configuration with translations
+  const categoryConfig = getCategoryConfig(t);
   const category = categoryConfig[categoryKey] || {
-    name: categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1),
-    title: `${categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1)} –----`,
+    name: t(categoryKey + 'Games') || categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1),
+    title: t(categoryKey + 'Title') || `${categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1)} –----`,
     icon: FaGamepad,
     color: "#ff8c42"
   };
@@ -120,7 +123,7 @@ function Box({ categoryName, showAllGames = false }) {
             href={`/category/${categoryKey}`}
             onClick={handleSeeAllClick}
           >
-            See All
+            {t('seeAll')}
           </a>
         )}
       </div>

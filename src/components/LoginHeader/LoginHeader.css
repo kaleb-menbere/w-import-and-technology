@@ -1,0 +1,95 @@
+.login-header {
+    background: #fff;
+    padding: 1rem 0;
+    width: 100%;
+  }
+  
+  .login-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  /* Logo Styles - Left Side */
+  .login-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .login-logo-img {
+    height: 40px;
+    width: auto;
+  }
+  
+  .login-logo-text {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Language Toggle Styles - Right Side */
+  .login-language-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-lang-btn {
+    background: transparent;
+    border: 2px solid #8DC63F;
+    color: #8DC63F;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .login-lang-btn:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .login-header-container {
+      padding: 0 1rem;
+    }
+    
+    .login-logo-img {
+      height: 35px;
+    }
+    
+    .login-logo-text {
+      font-size: 1.3rem;
+    }
+    
+    .login-lang-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .login-header {
+      padding: 1rem 0;
+    }
+    
+    .login-logo-text {
+      font-size: 1.1rem;
+    }
+    
+    .login-logo-img {
+      height: 30px;
+    }
+    
+    .login-lang-btn {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+    }
+  }

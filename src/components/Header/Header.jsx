@@ -92,6 +92,7 @@ function Header() {
           </div>
 
           <Link className="my-account links" to="/">{t('myAccount')}</Link>
+          <Link className="links logout" to="/">{t('logout')}</Link>
           
           {/* Simplified Language Toggle Button */}
           <button 
@@ -132,6 +133,7 @@ function Header() {
         </div>
 
         <Link className="links my-account" to="/" onClick={closeMobileMenu}>{t('myAccount')}</Link>
+        <Link className="active links logout" to="/" onClick={closeMobileMenu}>{t('logout')}</Link>
         
         {/* Simplified Mobile Language Toggle Button */}
         <button 

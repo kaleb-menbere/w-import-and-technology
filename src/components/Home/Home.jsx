@@ -10,10 +10,11 @@ function Home() {
 
             <Hero />
             <Box categoryName="action" />
-            <Box categoryName="adventure" />
             <Box categoryName="puzzle" />
+            <Box categoryName="adventure" />
+            <Box categoryName="arcade" />
             <Box categoryName="sports" />
-      <Box categoryName="arcade" />
+
             <About />
             
   
