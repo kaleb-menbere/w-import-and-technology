@@ -2,8 +2,6 @@
 .header {
   background: #8DC63F;
   height: 12vh;
-  min-height: 60px;
-  max-height: 100px;
   display: flex;
   align-items: center;
   width: 100%;
@@ -20,7 +18,7 @@
   justify-content: space-between;
   width: 100%;
   padding: 0;
-  height: 8vh;
+  height: 12vh;
 }
 
 /* ===== LOGO CAPS ===== */
@@ -31,9 +29,7 @@
 }
 
 .cap img {
-  height: 12vh;
-  min-height: 60px;
-  max-height: 100px;
+  max-height: 12vh;
   width: auto;
   object-fit: contain;
   margin: 0;
