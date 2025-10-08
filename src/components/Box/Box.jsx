@@ -8,7 +8,7 @@ import { useFrappeGetDocList } from "frappe-react-sdk";
 
 // Known categories with their specific icons only
 const KNOWN_CATEGORIES = {
-  action: {
+  education: {
     icon: FaFistRaised,
   },
   adventure: {
@@ -34,7 +34,7 @@ const HEADER_COLORS = ["#85c443", "#fff"];
 
 // Specific icon colors for known categories
 const KNOWN_CATEGORY_COLORS = {
-  action: "#ff8c42",
+  education: "#ff8c42",
   adventure: "#85c443",
   puzzle: "#ff6b6b",
   sports: "#4ecdc4",
@@ -53,7 +53,7 @@ function Box({ categoryName, showAllGames = false, categoryData = [], index = 0 
   console.log("Box received categoryName:", categoryName, "with data:", categoryData);
 
   // Use lowercase for consistency
-  const categoryKey = categoryName?.toLowerCase() || "action";
+  const categoryKey = categoryName?.toLowerCase() || "education";
 
   // Get background and text colors based on index (0,1,0,1,0,1...)
   const colorIndex = index % BACKGROUND_COLORS.length;
