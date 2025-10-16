@@ -8,20 +8,16 @@ export default function MyAccount() {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const { currentUser } = useFrappeAuth();
-  console.log("*************************************")
-  console.log("*************************************")
-  console.log("*************************************")
-  console.log("*************************************")
-  console.log("*************************************")
-  console.log("*************************************")
-  console.log("*************************************")
   console.log(currentUser)
-  // Fetch subscription for logged-in user
+  // Get stored phone from OTP login
+  const storedPhone = typeof window !== 'undefined' ? localStorage.getItem('kidopia_phone') : '';
+
+  // Fetch subscription by stored phone number
   const { data: subscriptions, error, isLoading } = useFrappeGetDocList(
     "Subscription",
     {
       fields: ["phone_number", "registration_date", "status", "subscription_type"],
-      filters: [["email", "=", currentUser]], // match logged-in user
+      filters: storedPhone ? [["phone_number", "=", storedPhone]] : [],
       limit: 1,
     }
   );
@@ -31,9 +27,7 @@ export default function MyAccount() {
   const handleBack = () => navigate(-1);
   const handleUnsubscribe = () => alert(t("unsubscribe") + " successful");
 
-  if (!currentUser) {
-    return <div>{t("please_login")}</div>;
-  }
+  if (!storedPhone && !currentUser) return <div>{t("please_login")}</div>;
 
   if (isLoading) return <div>{t("loading")}...</div>;
   if (error) return <div>{t("error_loading_data")}</div>;

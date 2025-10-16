@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useFrappeAuth } from 'frappe-react-sdk';
+import { useFrappeAuth, useFrappePostCall } from 'frappe-react-sdk';
 
 const AuthContext = createContext();
 
@@ -14,13 +14,19 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const { login, logout, currentUser, isLoading, error } = useFrappeAuth();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [otpPhone, setOtpPhone] = useState(() => localStorage.getItem('kidopia_phone') || '');
+
+  // Prepare POST callers for OTP endpoints
+  const { call: callSendOtp, loading: sendingOtp } = useFrappePostCall('game_portal.game_portal.api.sendOTP');
+  const { call: callCheckOtp, loading: checkingOtp } = useFrappePostCall('game_portal.game_portal.api.checkOTP');
 
   useEffect(() => {
     console.log('AuthContext - currentUser changed:', currentUser);
     console.log('AuthContext - isLoading:', isLoading);
     console.log('AuthContext - error:', error);
-    setIsAuthenticated(!!currentUser);
-  }, [currentUser, isLoading, error]);
+    // Consider authenticated if either Frappe session exists or OTP phone stored
+    setIsAuthenticated(!!currentUser || !!otpPhone);
+  }, [currentUser, isLoading, error, otpPhone]);
 
   const handleLogin = async (email, password) => {
     try {
@@ -76,6 +82,8 @@ export const AuthProvider = ({ children }) => {
     try {
       await logout();
       setIsAuthenticated(false);
+      setOtpPhone('');
+      localStorage.removeItem('kidopia_phone');
       return { success: true };
     } catch (err) {
       console.error('Logout error:', err);
@@ -86,13 +94,46 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // OTP: send code to phone
+  const sendOtp = async (phoneNumber) => {
+    try {
+      const payload = { phone_number: phoneNumber };
+      const res = await callSendOtp(payload);
+      return { success: true, data: res?.message };
+    } catch (err) {
+      console.error('sendOtp error:', err);
+      return { success: false, error: err.message || 'Failed to send OTP' };
+    }
+  };
+
+  // OTP: verify code -> authenticate app and store phone
+  const verifyOtp = async (phoneNumber, otp) => {
+    try {
+      const payload = { phone_number: phoneNumber, otp };
+      const res = await callCheckOtp(payload);
+      // If backend returns success, mark authenticated and store phone
+      setOtpPhone(phoneNumber);
+      localStorage.setItem('kidopia_phone', phoneNumber);
+      setIsAuthenticated(true);
+      return { success: true, data: res?.message };
+    } catch (err) {
+      console.error('verifyOtp error:', err);
+      return { success: false, error: err.message || 'Invalid OTP' };
+    }
+  };
+
   const value = {
     isAuthenticated,
     currentUser,
     isLoading,
     error,
+    sendingOtp,
+    checkingOtp,
+    otpPhone,
     login: handleLogin,
     logout: handleLogout,
+    sendOtp,
+    verifyOtp,
   };
 
   return (

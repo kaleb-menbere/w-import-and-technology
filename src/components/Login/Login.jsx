@@ -5,7 +5,7 @@ import { useLanguage } from "../../contexts/LanguageContext";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function LoginPage() {
-  const { login, isLoading } = useAuth();
+  const { sendOtp, verifyOtp, sendingOtp, checkingOtp } = useAuth();
   const navigate = useNavigate();
   const [phone, setPhone] = useState("");
   const [pin, setPin] = useState("");
@@ -18,6 +18,7 @@ export default function LoginPage() {
     sessionStorage.setItem("lang", currentLang);
   }, [currentLang]);
   const [localLoading, setLocalLoading] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
 
   const validatePhone = (phone) => {
     // Remove any non-digit characters and check if it's a valid phone number
@@ -61,17 +62,11 @@ export default function LoginPage() {
       return;
     }
 
-    // Format phone number for email
-    const emailForFrappe = formatPhoneForEmail(phone);
-    console.log('Calling login function with:', { email: emailForFrappe, password: '***' });
-
-  // Start loading
-  setLocalLoading(true);
-    const result = await login(emailForFrappe, pin);
-    
-  // Stop loading
-  setLocalLoading(false);
-    console.log('Login result:', result);
+    // Verify OTP (PIN)
+    setLocalLoading(true);
+    const result = await verifyOtp(phone, pin);
+    setLocalLoading(false);
+    console.log('OTP verify result:', result);
 
     if (result.success) {
       setMessages({ error: "", success: t("login_success") });
@@ -84,6 +79,25 @@ export default function LoginPage() {
       }
     }
        
+  };
+
+  const handleSendOtp = async () => {
+    if (!phone) {
+      setMessages({ error: t('invalid_phone'), success: '' });
+      return;
+    }
+    if (!validatePhone(phone)) {
+      setMessages({ error: t('invalid_phone'), success: '' });
+      return;
+    }
+    setMessages({ error: '', success: '' });
+    const res = await sendOtp(phone);
+    if (res.success) {
+      setOtpSent(true);
+      setMessages({ error: '', success: t('send_code') || 'Code sent' });
+    } else {
+      setMessages({ error: res.error || 'Failed to send code', success: '' });
+    }
   };
 
 
@@ -129,7 +143,7 @@ export default function LoginPage() {
                   />
                 </div>
 
-                {/* PIN Input */}
+                {/* PIN / OTP Input */}
                 <div className="kidopia-input-group">
                   <input
                     type="password"
@@ -138,6 +152,21 @@ export default function LoginPage() {
                     placeholder={t('pin_placeholder')}
                     required
                   />
+                </div>
+
+                {/* Send OTP Button */}
+                <div className="kidopia-otp-actions">
+                  <button
+                    type="button"
+                    className="kidopia-btn-send-otp"
+                    onClick={handleSendOtp}
+                    disabled={sendingOtp || !phone || !validatePhone(phone)}
+                  >
+                    {sendingOtp ? (t('sending') || 'Sending...') : (t('send_code') || 'Send Code')}
+                  </button>
+                  {otpSent && (
+                    <span className="otp-sent-note">{t('code_sent') || 'Code sent to your phone'}</span>
+                  )}
                 </div>
 
                 {/* Consent */}
@@ -156,13 +185,13 @@ export default function LoginPage() {
                   </label>
                 </div>
 
-                {/* Login Button */}
+                {/* Verify OTP Button */}
                 <button
                   className="kidopia-btn-login"
                   onClick={handleLogin}
-                  disabled={localLoading || !phone || !pin || !agreeTnc}
+                  disabled={localLoading || checkingOtp || !phone || !pin || !agreeTnc}
                 >
-                  {localLoading ? <span className="loading-text">{t('logging_in')}</span> : t('login_btn')}
+                  {localLoading || checkingOtp ? <span className="loading-text">{t('verifying') || 'Verifying...'}</span> : (t('login_btn') || 'Verify OTP')}
                 </button>
 
 
