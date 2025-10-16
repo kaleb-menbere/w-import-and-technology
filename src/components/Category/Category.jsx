@@ -17,7 +17,7 @@ function Category() {
 
   // For category pages, we can use a fixed index or determine based on category
   const getCategoryIndex = (category) => {
-    const categoryOrder = ['action', 'adventure', 'puzzle', 'sports', 'reflex'];
+    const categoryOrder = ['education', 'adventure', 'puzzle', 'sports', 'reflex'];
     const index = categoryOrder.indexOf(category.toLowerCase());
     return index >= 0 ? index : 0;
   };

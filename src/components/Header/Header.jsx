@@ -93,11 +93,12 @@ function Header() {
           <div className="dropdown">
             <span className="dropbtn links">{t('gameCategory')} ▾</span>
             <div className="dropdown-content">
+              
+            <Link className="categorys" to="/category/adventure">{t('adventureGames')}</Link>
               <Link className="categorys" to="/category/education">{t('educationGames')}</Link>
-              <Link className="categorys" to="/category/adventure">{t('adventureGames')}</Link>
+              <Link className="categorys" to="/category/puzzle">{t('puzzleGames')}</Link>
               <Link className="categorys" to="/category/reflex">{t('reflexGames')}</Link>
               <Link className="categorys" to="/category/sports">{t('sportsGames')}</Link>
-              <Link className="categorys" to="/category/puzzle">{t('puzzleGames')}</Link>
             </div>
           </div>
 
@@ -134,11 +135,12 @@ function Header() {
           
           {/* Dropdown content now appears right below the button */}
           <div className={`mobile-dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
+            
+          <Link className="categorys" to="/category/adventure" onClick={closeMobileMenu}>{t('adventureGames')}</Link>
             <Link className="categorys" to="/category/education" onClick={closeMobileMenu}>{t('educationGames')}</Link>
-            <Link className="categorys" to="/category/adventure" onClick={closeMobileMenu}>{t('adventureGames')}</Link>
+            <Link className="categorys" to="/category/puzzle" onClick={closeMobileMenu}>{t('puzzleGames')}</Link>
             <Link className="categorys" to="/category/reflex" onClick={closeMobileMenu}>{t('reflexGames')}</Link>
             <Link className="categorys" to="/category/sports" onClick={closeMobileMenu}>{t('sportsGames')}</Link>
-            <Link className="categorys" to="/category/puzzle" onClick={closeMobileMenu}>{t('puzzleGames')}</Link>
           </div>
         </div>
 

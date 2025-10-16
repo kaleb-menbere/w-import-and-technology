@@ -17,16 +17,6 @@ function Hero() {
                         {t('heroDescription')}
                     </p>
                     <div className="hero-cta">
-                    {/* <a
-                        className="btn"
-                        href="https://www.kidopia.et/Drr/ethtelco/kidopia_home.php#"
-                    >
-                        {t('playNow')}
-                        <span className="play-icon">
-                            <FaPlay />
-                        </span>
-                    </a> */}
-                    {/* <a class="btn alt" href="#">Browse Games</a> */}
                     </div>
                 </div>
 

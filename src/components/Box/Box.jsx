@@ -124,7 +124,7 @@ function Box({ categoryName, showAllGames = false, categoryData = [], index = 0 
         <div className="title-container">
           <IconComponent className="clr" style={{ color: iconColor }} size="2em" />
           <h2 className="section-title-h2" style={{ color: textColor }}>
-            {name}
+            {name.toUpperCase()}
           </h2>
         </div>
         {/* Show "See All" link that navigates to internal category page */}
