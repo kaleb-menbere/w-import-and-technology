@@ -26,13 +26,6 @@ export default function LoginPage() {
     return cleanPhone.length >= 9 && cleanPhone.length <= 15;
   };
 
-  const formatPhoneForEmail = (phone) => {
-    // Remove any non-digit characters
-    const cleanPhone = phone.replace(/\D/g, '');
-    // Add "0" prefix and "@yourdomain.com" suffix
-    return `0${cleanPhone}@yourdomain.com`;
-  };
-
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -64,7 +57,7 @@ export default function LoginPage() {
 
     // Verify OTP (PIN)
     setLocalLoading(true);
-    const result = await verifyOtp(phone, pin);
+    const result = await verifyOtp('251' + phone, pin);
     setLocalLoading(false);
     console.log('OTP verify result:', result);
 
@@ -91,7 +84,7 @@ export default function LoginPage() {
       return;
     }
     setMessages({ error: '', success: '' });
-    const res = await sendOtp(phone);
+    const res = await sendOtp('251' + phone);
     if (res.success) {
       setOtpSent(true);
       setMessages({ error: '', success: t('send_code') || 'Code sent' });
