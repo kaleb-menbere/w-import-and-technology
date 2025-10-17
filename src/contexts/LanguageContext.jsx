@@ -82,6 +82,11 @@ export const LanguageProvider = ({ children }) => {
       termsConditions: "Terms & Conditions",
       welcome: "WELCOME TO KIDOPIA",
       login: "Login",
+      send_code: "Send OTP",
+      resend_code: "Re-Send OTP",
+      sent_code: "OTP Sent Successfully",
+      verify_code: "Verify OTP",
+      verifying: "Verifying...",
       description: "Enter your phone number and PIN to access your account",
       phone_placeholder: "Enter your phone number",
       pin_placeholder: "Enter your PIN",
@@ -108,6 +113,10 @@ export const LanguageProvider = ({ children }) => {
       subscription_type: "Subscription Type",
       back: "Back",
       unsubscribe: "Unsubscribe",
+      loading: "Loading...",
+      failedToLoad: "Failed to load data.",
+      noGamesAvailable: "No games available yet",
+
     },
     am: {
       home: "መግቢያ",
@@ -174,6 +183,11 @@ export const LanguageProvider = ({ children }) => {
       termsConditions: "ውሎች እና ሁኔታዎች",
       welcome: "እንኳን ወደ Kidopia በደህና መጡ",
       login: "ለመመዝገብ",
+      send_code: "ኦቲፒ ላክ",
+      resend_code: "ኦቲፒ ድጋሚ ላክ",
+      sent_code: "ኦቲፒ ተልኳል",
+      verify_code: "ኦቲፒ አረጋግጥ",
+      verifying: "በመግባት ላይ...",
       description: "የስልክ ቁጥርዎን እና ፒን ያስገቡ",
       phone_placeholder: "የስልክ ቁጥርዎን ያስገቡ",
       pin_placeholder: "ፒንዎን ያስገቡ",
@@ -200,6 +214,10 @@ export const LanguageProvider = ({ children }) => {
       subscription_type: "የመመዝገቢያ አይነት",
       back: "ተመለስ",
       unsubscribe: "መመዝገብ ሰርዝ",
+      loading: "በመጫን ላይ...",
+      failedToLoad: "መረጃ መጫን አልተሳካም።",
+      noGamesAvailable: "ጨዋታዎች አልተገኙም።",
+
     }
   };
 

@@ -32,7 +32,7 @@ function Category() {
         index={categoryIndex} 
       />
     </div>
-  );
+  ); 
 }
 
 export default Category;

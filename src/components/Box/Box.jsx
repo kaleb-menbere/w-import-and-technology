@@ -83,9 +83,9 @@ function Box({ categoryName, showAllGames = false, categoryData = [], index = 0 
 
   const categoryDoc = categoryDocs && categoryDocs.length > 0 ? categoryDocs[0] : null;
 
-  // Compute display name/title from category document or language fallback
-  const name = (categoryDoc && categoryDoc.category_name) || t(categoryKey + 'Games') || categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1);
-  const title = t(categoryKey + 'Title') || `${categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1)} Games`;
+const name = t(categoryKey + 'Games');
+const title = t(categoryKey + 'Title');
+
 
   // Load Games from Frappe (Game List) filtered by category
   const {
@@ -138,7 +138,6 @@ function Box({ categoryName, showAllGames = false, categoryData = [], index = 0 
             {t('seeAll')}
           </a>
         )}
-
 
 
       </div>
