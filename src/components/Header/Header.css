@@ -197,13 +197,20 @@
 .hamburger-menu.open span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
+/* ===== Smaller Mobile Top Bar Text ===== */
+.mobile-top-bar-small .links,
+.mobile-top-bar-small .toggle-lang.links {
+  font-size: clamp(12px, 1.6vh, 16px); /* slightly smaller text */
+  font-weight: 500;
+}
+
 
 /* ===== MOBILE NAVIGATION ===== */
 .mobile-nav {
   display: none;
-  position: absolute;
-  top: -10vh;
-  right: 20vw; /* 🟢 appears on the right side of the hamburger */
+  position: relative;
+  margin-top: -4.5vh;
+  margin-left: -5vh;
   width: 60%;
   max-width: 300px;
   height: auto;

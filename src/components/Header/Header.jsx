@@ -75,19 +75,19 @@ function Header() {
             <img src="/images/ethio_telecom_logo.svg" className="" alt="Ethio Telecom" />
           </div>
 
-          {/* Mobile Top Bar - Only on phone */}
-          <div className="mobile-top-bar">
-            <Link className="links home" to="/">{t('home')}</Link>
-            <button 
-              className="toggle-lang links" 
-              onClick={() => {
-                toggleLanguage();
-                closeMobileMenu();
-              }}
-            >
-              {currentLang === 'en' ? 'አማርኛ' : 'English'}
-            </button>
-          </div>
+<div className="mobile-top-bar mobile-top-bar-small">
+  <Link className="links home" to="/">{t('home')}</Link>
+  <button 
+    className="toggle-lang links" 
+    onClick={() => {
+      toggleLanguage();
+      closeMobileMenu();
+    }}
+  >
+    {currentLang === 'en' ? 'አማርኛ' : 'English'}
+  </button>
+</div>
+
           {/* Center navigation - Desktop */}
           <nav className="green-bar">
             <Link className="active links home" to="/">{t('home')}</Link>
@@ -135,10 +135,10 @@ function Header() {
           <span></span>
         </button>
               {/* Mobile Navigation */}
-      <nav 
+       <nav 
         ref={mobileNavRef}
         className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}
-      >
+       >
         
         {/* Mobile Dropdown Container */}
         <div className="mobile-dropdown-container">
@@ -160,7 +160,7 @@ function Header() {
         </div>
 
 
-      </nav>
+       </nav>
       </div>
 
 
