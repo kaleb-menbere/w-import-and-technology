@@ -67,14 +67,63 @@ function Header() {
   }, [isMobileMenuOpen]);
 
   return (
-    <header className="header">
-      <div className="nav-shell">
-        {/* Left logo */}
-        <div className="cap left-cap">
-          <img src="/images/ethio_telecom_logo.svg" className="" alt="Ethio Telecom" />
-        </div>
+    <div className="header-wrapper">
+      <header className="header">
+        <div className="nav-shell">
+          {/* Left logo */}
+          <div className="cap left-cap">
+            <img src="/images/ethio_telecom_logo.svg" className="" alt="Ethio Telecom" />
+          </div>
 
-        {/* Hamburger Menu Button */}
+          {/* Mobile Top Bar - Only on phone */}
+          <div className="mobile-top-bar">
+            <Link className="links home" to="/">{t('home')}</Link>
+            <button 
+              className="toggle-lang links" 
+              onClick={() => {
+                toggleLanguage();
+                closeMobileMenu();
+              }}
+            >
+              {currentLang === 'en' ? 'አማርኛ' : 'English'}
+            </button>
+          </div>
+          {/* Center navigation - Desktop */}
+          <nav className="green-bar">
+            <Link className="active links home" to="/">{t('home')}</Link>
+
+            <div className="dropdown">
+              <span className="dropbtn links">{t('gameCategory')} ▾</span>
+              <div className="dropdown-content">
+                <Link className="categorys" to="/category/adventure">{t('adventureGames')}</Link>
+                <Link className="categorys" to="/category/education">{t('educationGames')}</Link>
+                <Link className="categorys" to="/category/puzzle">{t('puzzleGames')}</Link>
+                <Link className="categorys" to="/category/reflex">{t('reflexGames')}</Link>
+                <Link className="categorys" to="/category/sports">{t('sportsGames')}</Link>
+              </div>
+            </div>
+
+            <Link className="my-account links" to="/my-account">{t('myAccount')}</Link>
+            <Link className="links logout" onClick={handleLogout}>{t('logout')}</Link>
+            
+            {/* Simplified Language Toggle Button */}
+            <button 
+              className="toggle-lang links" 
+              onClick={toggleLanguage}
+            >
+              {currentLang === 'en' ? 'አማርኛ|English' : 'English|አማርኛ'}
+            </button>
+          </nav>
+
+          {/* Right logo */}
+          <div className="cap right-cap">
+            <img className="kidopia " src="/images/kidopia-logo.png" alt="KIDOPIA" />
+          </div>
+        </div>
+      </header>
+
+      {/* Hamburger Row - Second Row */}
+      <div className="hamburger-row">
         <button 
           ref={hamburgerRef}
           className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`} 
@@ -85,47 +134,11 @@ function Header() {
           <span></span>
           <span></span>
         </button>
-
-        {/* Center navigation - Desktop */}
-        <nav className="green-bar">
-          <Link className="active links home" to="/">{t('home')}</Link>
-
-          <div className="dropdown">
-            <span className="dropbtn links">{t('gameCategory')} ▾</span>
-            <div className="dropdown-content">
-              
-            <Link className="categorys" to="/category/adventure">{t('adventureGames')}</Link>
-              <Link className="categorys" to="/category/education">{t('educationGames')}</Link>
-              <Link className="categorys" to="/category/puzzle">{t('puzzleGames')}</Link>
-              <Link className="categorys" to="/category/reflex">{t('reflexGames')}</Link>
-              <Link className="categorys" to="/category/sports">{t('sportsGames')}</Link>
-            </div>
-          </div>
-
-          <Link className="my-account links" to="/my-account">{t('myAccount')}</Link>
-          <Link className="links logout" onClick={handleLogout}>{t('logout')}</Link>
-          
-          {/* Simplified Language Toggle Button */}
-          <button 
-            className="toggle-lang links" 
-            onClick={toggleLanguage}
-          >
-            {currentLang === 'en' ? 'አማርኛ|English' : 'English|አማርኛ'}
-          </button>
-        </nav>
-
-        {/* Right logo */}
-        <div className="cap right-cap">
-          <img className="kidopia " src="/images/kidopia-logo.png" alt="KIDOPIA" />
-        </div>
-      </div>
-
-      {/* Mobile Navigation */}
+              {/* Mobile Navigation */}
       <nav 
         ref={mobileNavRef}
         className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}
       >
-        <Link className="links home" to="/" onClick={closeMobileMenu}>{t('home')}</Link>
         
         {/* Mobile Dropdown Container */}
         <div className="mobile-dropdown-container">
@@ -146,19 +159,11 @@ function Header() {
 
         <Link className="links my-account" to="/my-account" onClick={closeMobileMenu}>{t('myAccount')}</Link>
         <button className="active links logout" onClick={() => { handleLogout(); closeMobileMenu(); }}>{t('logout')}</button>
-        
-        {/* Simplified Mobile Language Toggle Button */}
-        <button 
-          className="toggle-lang links" 
-          onClick={() => {
-            toggleLanguage();
-            closeMobileMenu();
-          }}
-        >
-          {currentLang === 'en' ? 'አማርኛ|English' : 'English|አማርኛ'}
-        </button>
       </nav>
-    </header>
+      </div>
+
+
+    </div>
   );
 }
 
