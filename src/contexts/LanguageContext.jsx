@@ -92,11 +92,13 @@ export const LanguageProvider = ({ children }) => {
       phone_placeholder: "xxxxxxxx",
       pin_placeholder: "OTP",
       invalid_phone: "Please enter a valid phone number",
-      pin_required: "PIN is required",
+      pin_required: "OTP is required",
+      phone_required: "Phone number is required",
       login_success: "Login successful! 🎉 Redirecting...",
       login_error: "Login failed. Please check your credentials.",
       please_register: "Please register first",
       consent: "By continuing, you agree to ",
+      agreeInc: "Please agree to the terms and conditions",
       terms: "Terms and Conditions",
       login_btn: "LOGIN",
       trial: "Enjoy a 3-day free trial for your first Registration",
@@ -117,7 +119,7 @@ export const LanguageProvider = ({ children }) => {
       loading: "Loading...",
       failedToLoad: "Failed to load data.",
       noGamesAvailable: "No games available yet",
-
+      in: "in",
     },
     am: {
       home: "መግቢያ",
@@ -194,11 +196,13 @@ export const LanguageProvider = ({ children }) => {
       phone_placeholder: "xxxxxxxx",
       pin_placeholder: "ኦቲፒ",
       invalid_phone: "እባክዎ ትክክለኛ የስልክ ቁጥር ያስገቡ",
-      pin_required: "ፒን ያስፈልጋል",
+      pin_required: "ኦቲፒ ያስፈልጋል",
+      phone_required: "ስልክ ቁጥር ያስገቡ",
       login_success: "ግባ ተሳክቷል! 🎉 በቅርብ ጊዜ እየተሻገረ ነው...",
       please_register: "እባክዎ ይመዝገቡ ፡፡",
       login_error: "ግባ አልተሳካም። እባክዎ የይለፍ ቃልዎን ያረጋግጡ።",
       consent: "በመቀጠል፤ ዉሎችን ተስማምተዋል",
+      agreeInc: "ዉሎችን ይስማሙ",
       terms: "ደንቦች",
       login_btn: "ግባ",
       trial: "ለመጀመሪያ ምዝገባዎ 3 ቀን በነፃ ይጠቀሙ",
@@ -219,7 +223,7 @@ export const LanguageProvider = ({ children }) => {
       loading: "በመጫን ላይ...",
       failedToLoad: "መረጃ መጫን አልተሳካም።",
       noGamesAvailable: "ጨዋታዎች አልተገኙም።",
-
+      in: "በ",
     }
   };
 

@@ -6,6 +6,7 @@ function About() {
   const { t } = useLanguage();
 
   return (
+    <dev>
     <section className="about">
       <img src="/images/exact_embed.png" alt="Character" />
       <div className="about-text">
@@ -18,6 +19,7 @@ function About() {
         </p>
       </div>
     </section>
+    </dev>
   );
 }
 

@@ -35,7 +35,7 @@ export default function LoginPage() {
   // Update button text based on countdown
   useEffect(() => {
     if (secondsLeft > 0) {
-      setButtonText(`Re-send in ${secondsLeft}s`);
+      setButtonText(`${t("resend_code")} ${t("in")} ${secondsLeft}s`);
     } else if (otpSent) {
       setButtonText(t("resend_code") || "Re-Send OTP");
       setIsSending(false);
@@ -73,54 +73,78 @@ export default function LoginPage() {
     }
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-    // ✅ Terms & Conditions first
-    if (!agreeTnc) {
-      setMessages({ error: "Please agree to terms and conditions", success: "" });
-      return;
-    }
 
-    // Validate inputs
-    if (!phone || !pin) {
+
+  // ✅ 2. Validate phone presence
+  if (!phone) {
+    setMessages({
+      error: t("phone_required") || "Phone number is required",
+      success: "",
+    });
+    return;
+  }
+
+  // ✅ 3. Validate phone format
+  if (!validatePhone(phone)) {
+    setMessages({
+      error: t("invalid_phone") || "Please enter a valid phone number",
+      success: "",
+    });
+    return;
+  }
+    // ✅ 1. Check Terms & Conditions
+  if (!agreeTnc) {
+    setMessages({
+      error: t("agreeInc") || "Please agree to terms and conditions",
+      success: "",
+    });
+    return;
+  }
+
+  // ✅ 4. Validate OTP/PIN
+  if (!pin) {
+    setMessages({
+      error: t("pin_required") || "Please enter your OTP/PIN",
+      success: "",
+    });
+    return;
+  }
+
+  // ✅ 5. Ensure OTP was sent
+  if (!otpSent) {
+    setMessages({
+      error: "Please request an OTP first",
+      success: "",
+    });
+    return;
+  }
+
+  // ✅ 6. Verify OTP
+  setLocalLoading(true);
+  const result = await verifyOtp("251" + phone, pin);
+  setLocalLoading(false);
+
+  if (result.success) {
+    setMessages({ error: "", success: t("login_success") || "Login successful!" });
+    setTimeout(() => navigate("/"), 1500);
+  } else {
+    if (
+      result.error?.toLowerCase().includes("not found") ||
+      result.error?.toLowerCase().includes("unregistered")
+    ) {
+      setMessages({ error: t("please_register") || "User not found, please register.", success: "" });
+    } else {
       setMessages({
-        error: !phone ? t("invalid_phone") : t("pin_required"),
+        error: result.error || t("login_error") || "Login failed. Please try again.",
         success: "",
       });
-      return;
     }
+  }
+};
 
-    if (!validatePhone(phone)) {
-      setMessages({ error: t("invalid_phone"), success: "" });
-      return;
-    }
-
-    // OTP must be sent first
-    if (!otpSent) {
-      setMessages({ error: "Please request an OTP first", success: "" });
-      return;
-    }
-
-    // Proceed to verify
-    setLocalLoading(true);
-    const result = await verifyOtp("251" + phone, pin);
-    setLocalLoading(false);
-
-    if (result.success) {
-      setMessages({ error: "", success: t("login_success") });
-      setTimeout(() => navigate("/"), 1500);
-    } else {
-      if (
-        result.error?.toLowerCase().includes("not found") ||
-        result.error?.toLowerCase().includes("unregistered")
-      ) {
-        setMessages({ error: t("please_register"), success: "" });
-      } else {
-        setMessages({ error: result.error || t("login_error"), success: "" });
-      }
-    }
-  };
 
   return (
     <div className="kidopia-login-page">

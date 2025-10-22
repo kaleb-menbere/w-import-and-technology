@@ -6,9 +6,9 @@
     align-items: center;
     gap: 5vh;
     flex-wrap: wrap;
-    min-height: 20vh;
-    padding: 0vh 5vw;
-    margin-top: 11vh;
+    min-height: 60vh;
+    padding: 7vh 5vw;
+    margin-top: 0vh;
 }
 
 .about img {
@@ -46,12 +46,14 @@
     font-weight: 500;
     margin-bottom: 1vh;
 }
-
+@media (max-width: 1600px){
+    .about{margin-top: 7vh;}
+}
 /* Tablet Devices */
 @media (max-width: 1024px) {
     .about {
         gap: 3vh;
-        padding: 3vh 5vw;   
+        padding: 0vh 5vw;   
     }
     
     .about img {
@@ -64,7 +66,7 @@
     .about {
         flex-direction: column;
         gap: 2vh;
-        padding: 2vh 5vw;
+        padding: 0vh 5vw;
         text-align: center;
     }
     
