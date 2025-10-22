@@ -157,6 +157,7 @@ function Header() {
             <Link className="categorys" to="/category/sports" onClick={closeMobileMenu}>{t('sportsGames')}</Link>
           </div>
           <Link className="mobile-dropdown-btn links my-account" to="/my-account" onClick={closeMobileMenu}>{t('myAccount')}</Link>
+          <Link className="mobile-dropdown-btn links" to="/about" onClick={closeMobileMenu}>{t('about')}</Link>
         <button className="mobile-dropdown-btn active  logout" onClick={() => { handleLogout(); closeMobileMenu(); }}>{t('logout')}</button>
         </div>
 
