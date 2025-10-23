@@ -161,12 +161,13 @@
 
 /* ===== HAMBURGER ROW ===== */
 .hamburger-row {
-  display: none; /* hidden on desktop */
+  display: none;
   background: transparent;
   border-bottom: none;
   position: relative;
   height: 8vh;
   align-items: center;
+  justify-content: flex-start; /* Align items to the left */
 }
 
 /* ===== HAMBURGER MENU ===== */
@@ -181,10 +182,9 @@
   cursor: pointer;
   padding: 0;
   margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 3vw;
-  transform: translateY(-50%);
+  position: relative;
+  margin-left: 3vw;
+  z-index: 1001; /* Ensure hamburger is above mobile nav */
 }
 
 .hamburger-menu span {
@@ -219,11 +219,13 @@
 /* ===== MOBILE NAVIGATION ===== */
 .mobile-nav {
   display: none;
-  position: relative;
-  margin-top: -4.5vh;
-  margin-left: -5vh;
-  width: 60%;
-  max-width: 300px;
+  position: absolute;
+  top: 100%; /* Position below hamburger row */
+  left: calc(clamp(25px, 6vw, 35px) + 4vw);
+  margin: 0;
+  width: auto;
+  min-width: 200px;
+  max-width: 280px;
   height: auto;
   background: #fff;
   flex-direction: column;
@@ -232,9 +234,11 @@
   border-radius: 10px;
   box-shadow: -2px 2px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: top right;
+  transform-origin: left center;
   opacity: 0;
   transform: scale(0.95);
+  margin-left: 3vw;
+  margin-top: -5vh;
 }
 
 .mobile-nav.open {
@@ -254,6 +258,7 @@
   border: none;
   text-align: center;
   width: 100%;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 /* Active state for generic links in mobile nav (e.g., About, My Account) */
@@ -268,6 +273,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #fff;
+  width: 100%;
 }
 .mobile-dropdown-btn {
   justify-content: space-between;
@@ -277,11 +283,13 @@
   border: none;
   color: #8DC63F;
   font-size: clamp(16px, 2vh, 20px);
-  padding: 1.5vh 9vw;
+  padding: 1.5vh 3vw;
   cursor: pointer;
   text-align: center;
   border-bottom: 0.1vh solid rgba(141, 198, 63, 0.2);
+  white-space: nowrap;
 }
+
 
 /* Active state for button-styled links in mobile nav */
 .mobile-dropdown-btn.links.active {
@@ -298,6 +306,7 @@
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   align-items: center;
+  position: relative;
 }
 
 .mobile-dropdown-content.open {
@@ -315,6 +324,7 @@
   transition: all 0.3s ease;
   width: 100%;
   text-align: center;
+  white-space: nowrap;
 }
 
 .mobile-nav .categorys:hover,
@@ -322,21 +332,19 @@
   color: #fff;
   background: #8DC63F;
 }
-
-/* ===== RESPONSIVE BREAKPOINTS ===== */
-@media (max-width: 768px) {
+/* Update responsive breakpoints */
+@media (max-width: 1024px) {
   .green-bar {
     display: none !important;
   }
 
   .hamburger-row {
     display: flex;
-    flex-direction: column;
-    gap: 0px;
   }
 
   .hamburger-menu {
     display: flex;
+    margin-left: 3vw;
   }
 
   .mobile-top-bar {
@@ -356,7 +364,7 @@
   }
 
   .mobile-nav {
-    top: 8vh; /* below mobile-top-bar */
+    left: calc(clamp(25px, 6vw, 35px) + 4vw); /* Consistent spacing */
   }
 
   .cap img {
@@ -367,25 +375,30 @@
 /* Small Mobile (480px and below) */
 @media (max-width: 480px) {
   .hamburger-menu {
-    left: 4vw;
+    margin-left: 4vw;
   }
 
   .mobile-nav {
-    top: 8vh;
+    left: calc(clamp(25px, 6vw, 35px) + 5vw); /* Slightly more space on small screens */
+    min-width: 180px; /* Smaller min-width for very small screens */
   }
 }
 
 /* Extra Small Devices (320px and below) */
 @media (max-width: 320px) {
   .hamburger-menu {
-    left: 5vw;
-  }
-
-  .cap.left-cap {
-    padding-left: 0;
+    margin-left: 5vw;
   }
 
   .mobile-nav {
-    top: 8vh;
+    left: calc(clamp(25px, 6vw, 35px) + 6vw);
+    min-width: 160px; /* Even smaller for tiny screens */
+    max-width: 220px;
+  }
+  
+  .mobile-nav .links,
+  .mobile-dropdown-btn {
+    font-size: clamp(14px, 1.8vh, 16px); /* Smaller font for tiny screens */
+    padding: 1.2vh 2vw;
   }
 }
