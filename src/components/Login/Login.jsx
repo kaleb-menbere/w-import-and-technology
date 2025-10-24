@@ -225,7 +225,6 @@ const handleLogin = async (e) => {
                     {buttonText}
                   </button>
                 </div>
-
                 {/* Consent */}
                 <div className="kidopia-consent-line">
                   <input
@@ -235,7 +234,7 @@ const handleLogin = async (e) => {
                     onChange={(e) => setAgreeTnc(e.target.checked)}
                   />
                   <label htmlFor="kidopia-tnc-checkbox">
-                    {t("consent")}{" "}
+                    <span className="consent-text">{t("consent")}{" "}</span>
                     <Link to="/terms" className="consent" target="_blank" rel="noopener noreferrer">
                       {t("terms")}
                     </Link>

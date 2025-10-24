@@ -257,7 +257,7 @@
 /* ===== Consent ===== */
 .kidopia-consent-line {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   margin: 16px 0;
   font-size: 14px;
@@ -277,6 +277,11 @@
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
+  text-decoration: underline;
+}
+.consent-text {
+  color: #000000; /* black */
+  font-weight: 600; /* bold */
 }
 
 .consent:hover {
@@ -316,7 +321,6 @@
   color: var(--text-light);
   margin-top: 16px;
   text-align: center;
-  font-style: italic;
   line-height: 1.4;
 }
 
@@ -426,7 +430,7 @@
   }
   
   .kidopia-consent-line {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 8px;
   }
