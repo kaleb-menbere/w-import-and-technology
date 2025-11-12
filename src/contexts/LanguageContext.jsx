@@ -120,17 +120,63 @@ export const LanguageProvider = ({ children }) => {
       failedToLoad: "Failed to load data.",
       noGamesAvailable: "No games available yet",
       in: "in",
+      
+      // BLOG WEBSITE TRANSLATIONS
       categories: 'Categories',
       healthTips: 'Health & Beauty',
       sportNews: 'Sports News',
       foodPreparation: 'Food & Recipes',
-      // Subcategories (you can use these in your category pages)
+      // Subcategories
       beautyTips: 'Beauty Tips',
       healthAdvice: 'Health Advice',
       foreignSports: 'International Sports',
       localSports: 'Local Sports',
       ethiopianFood: 'Ethiopian Traditional',
-      foreignFood: 'International Cuisine'
+      foreignFood: 'International Cuisine',
+      
+      // Homepage Translations
+      searchPlaceholder: 'Search articles...',
+      search: 'Search',
+      popularPosts: 'Popular Posts',
+      mostRead: 'Most read articles this week',
+      viewAllPosts: 'View All Posts →',
+      exploreTopics: 'Explore articles by topic',
+      stayUpdated: 'Stay Updated',
+      newsletterDesc: 'Get the latest articles delivered to your inbox daily',
+      enterEmail: 'Enter your email address',
+      subscribe: 'Subscribe',
+      health: 'Health',
+      sports: 'Sports', 
+      food: 'Food',
+      articles: 'articles',
+      
+      // Blog Post Translations
+      readTime: 'min read',
+      likes: 'likes',
+      author: 'Author',
+      publishedOn: 'Published on',
+      relatedPosts: 'Related Posts',
+      shareThisPost: 'Share this post',
+      comments: 'Comments',
+      leaveComment: 'Leave a comment',
+      postComment: 'Post Comment',
+      loadingPosts: 'Loading posts...',
+      noPostsFound: 'No posts found',
+      readMore: 'Read More',
+      
+      // Category Pages
+      allPosts: 'All Posts',
+      filterBy: 'Filter by',
+      sortBy: 'Sort by',
+      newestFirst: 'Newest First',
+      oldestFirst: 'Oldest First',
+      mostPopular: 'Most Popular',
+      
+      // Subscription
+      newsletterSuccess: 'Thank you for subscribing!',
+      newsletterError: 'Subscription failed. Please try again.',
+      emailRequired: 'Email is required',
+      invalidEmail: 'Please enter a valid email address'
     },
     am: {
       home: "ዋና ገፅ",
@@ -157,7 +203,7 @@ export const LanguageProvider = ({ children }) => {
       aboutTitle: "የቀጣይ ደረጃ መዝናኛን ከW Import and Technology ጋር ይለማመዱ - የእርስዎ የመጨረሻው ፕሪሚየም HTML5 ጨዋታ መግቢያ።",
       aboutDescription: "አዝናኝ አስተማሪ እንዲሁም አንድ ደረጃ ከፍ ያለ ከ100 በላይ ጌሞች ከ ኪዶፒያ ቀርቦሎታል፡፡ ጌሞቹን ማውረድ ሳይጠበቅቦት በቀጥታ ከፍጥነት ጋር በስልኮ፡ በላፕቶፖ እና በታብሌቶ ይዝናኑ፡፡",
       privacyPolicy: "የግለሰቦች ፖሊሲ",
-      faq: "FAQ", // You can add Amharic translation if needed
+      faq: "FAQ",
       copyright: "© ኢትዮ ቴሌኮም W Import and Technology 2025፣ መብቱ በህግ የተጠበቀ ነው።",
       // Updated Terms and Conditions from Excel (Amharic)
       termsTitle: "ውሎች እና ሁኔታዎች",
@@ -235,6 +281,8 @@ export const LanguageProvider = ({ children }) => {
       failedToLoad: "መረጃ መጫን አልተሳካም።",
       noGamesAvailable: "ጨዋታዎች አልተገኙም።",
       in: "በ",
+      
+      // BLOG WEBSITE TRANSLATIONS
       categories: 'ምድቦች',
       healthTips: 'ጤና እና ውበት',
       sportNews: 'ስፖርት ዜና',
@@ -245,7 +293,51 @@ export const LanguageProvider = ({ children }) => {
       foreignSports: 'የውጭ ስፖርት',
       localSports: 'የአገር ውስጥ ስፖርት',
       ethiopianFood: 'ባህላዊ ምግብ',
-      foreignFood: 'የውጭ ምግብ'
+      foreignFood: 'የውጭ ምግብ',
+      
+      // Homepage Translations
+      searchPlaceholder: 'ጽሑፎችን ይፈልጉ...',
+      search: 'ፈልግ',
+      popularPosts: 'ታዋቂ ጽሑፎች',
+      mostRead: 'በዚህ ሳምንት በጣም የተነበቡ ጽሑፎች',
+      viewAllPosts: 'ሁሉንም ጽሑፎች ይመልከቱ →',
+      exploreTopics: 'ጽሑፎችን በርዕሰ ጉዳይ ይፈልጉ',
+      stayUpdated: 'ዝመና ያግኙ',
+      newsletterDesc: 'የቅርብ ጽሑፎችን በየቀኑ በኢሜልዎ ይቀበሉ',
+      enterEmail: 'ኢሜል አድራሻዎን ያስገቡ',
+      subscribe: 'ይመዝገቡ',
+      health: 'ጤና',
+      sports: 'ስፖርት', 
+      food: 'ምግብ',
+      articles: 'ጽሑፎች',
+      
+      // Blog Post Translations
+      readTime: 'ደቂቃ ንባብ',
+      likes: 'ውደድ',
+      author: 'ደራሲ',
+      publishedOn: 'የታተመበት ቀን',
+      relatedPosts: 'ተዛማጅ ጽሑፎች',
+      shareThisPost: 'ይህን ጽሑፍ አጋራ',
+      comments: 'አስተያየቶች',
+      leaveComment: 'አስተያየት ይስጡ',
+      postComment: 'አስተያየት ለጥፍ',
+      loadingPosts: 'ጽሑፎች በመጫን ላይ...',
+      noPostsFound: 'ጽሑፎች አልተገኙም',
+      readMore: 'ተጨማሪ ያንብቡ',
+      
+      // Category Pages
+      allPosts: 'ሁሉም ጽሑፎች',
+      filterBy: 'አጣራ በ',
+      sortBy: 'ደርድር በ',
+      newestFirst: 'አዲስ በመጀመሪያ',
+      oldestFirst: 'የድሮ በመጀመሪያ',
+      mostPopular: 'በጣም ታዋቂ',
+      
+      // Subscription
+      newsletterSuccess: 'ለመመዝገብ እናመሰግናለን!',
+      newsletterError: 'መመዝገብ አልተሳካም። እባክዎ እንደገና ይሞክሩ።',
+      emailRequired: 'ኢሜል ያስፈልጋል',
+      invalidEmail: 'እባክዎ ትክክለኛ ኢሜል አድራሻ ያስገቡ'
     }
   };
 

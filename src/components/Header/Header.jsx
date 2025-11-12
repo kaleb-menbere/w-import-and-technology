@@ -103,12 +103,6 @@ function Header() {
             >
               {t('myAccount')}
             </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) => `links ${isActive ? 'active' : ''}`}
-            >
-              {t('about')}
-            </NavLink>
             <button className="links logout-btn" onClick={handleLogout}>{t('logout')}</button>
             <button
               className="toggle-lang links lang-btn"
@@ -207,15 +201,6 @@ function Header() {
             >
               <span className="account-icon">👤</span>
               {t('myAccount')}
-            </NavLink>
-
-            <NavLink 
-              className={({ isActive }) => `mobile-nav-item account-item ${isActive ? 'active' : ''}`} 
-              to="/about" 
-              onClick={closeMobileMenu}
-            >
-              <span className="account-icon">ℹ️</span>
-              {t('about')}
             </NavLink>
           </div>
 

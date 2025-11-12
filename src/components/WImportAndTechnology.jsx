@@ -13,7 +13,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import { Routes, Route, useLocation } from "react-router-dom"; 
 import { LanguageProvider } from "../contexts/LanguageContext";
 import { useAuth } from "../contexts/AuthContext";
-import About from "./About/About";
 
 function WImportAndTechnology() {
   const location = useLocation(); 
@@ -49,11 +48,6 @@ function WImportAndTechnology() {
             <Route path="/my-account" element={
               <ProtectedRoute>
                 <MyAccount />
-              </ProtectedRoute>
-            } />
-            <Route path="/about" element={
-              <ProtectedRoute>
-                <About />
               </ProtectedRoute>
             } />
           </Routes>
