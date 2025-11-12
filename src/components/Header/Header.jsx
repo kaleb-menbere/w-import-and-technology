@@ -37,7 +37,6 @@ function Header() {
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Check if click is outside both mobile nav and hamburger button
       if (
         isMobileMenuOpen &&
         mobileNavRef.current &&
@@ -49,17 +48,13 @@ function Header() {
       }
     };
 
-    // Add event listener when mobile menu is open
     if (isMobileMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      // Prevent body scroll when mobile menu is open
       document.body.style.overflow = 'hidden';
     } else {
-      // Re-enable body scroll when mobile menu is closed
       document.body.style.overflow = 'unset';
     }
 
-    // Cleanup function
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = 'unset';
@@ -67,31 +62,13 @@ function Header() {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="header-wrapper">
-      <header className="header">
+    <>
+      {/* Desktop Header */}
+      <header className="header desktop-header">
         <div className="nav-shell">
           {/* Left logo */}
           <div className="cap left-cap">
-            <img src="/images/ethio_telecom_logo.svg" className="" alt="Ethio Telecom" />
-          </div>
-
-          <div className="mobile-top-bar mobile-top-bar-small">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) => `links home ${isActive ? 'active' : ''}`}
-            >
-              {t('home')}
-            </NavLink>
-            <button
-              className="toggle-lang links"
-              onClick={() => {
-                toggleLanguage();
-                closeMobileMenu();
-              }}
-            >
-              {currentLang === 'en' ? 'አማርኛ' : 'English'}
-            </button>
+            <img src="/images/w.jpg" className="logo-img" alt="Daily Blog" />
           </div>
 
           {/* Center navigation - Desktop */}
@@ -103,16 +80,23 @@ function Header() {
             >
               {t('home')}
             </NavLink>
+            
+            {/* Categories Dropdown - ONLY PLACE FOR CATEGORIES */}
             <div className="dropdown">
-              <span className="dropbtn links">{t('Category')} ▾</span>
+              <span className="dropbtn links">{t('categories')} ▾</span>
               <div className="dropdown-content">
-                <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/adventure">{t('adventureGames')}</NavLink>
-                <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/education">{t('educationGames')}</NavLink>
-                <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/puzzle">{t('puzzleGames')}</NavLink>
-                <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/reflex">{t('reflexGames')}</NavLink>
-                <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/sports">{t('sportsGames')}</NavLink>
+                <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/health-tips">
+                  {t('healthTips')}
+                </NavLink>
+                <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/sport-news">
+                  {t('sportNews')}
+                </NavLink>
+                <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/food-preparation">
+                  {t('foodPreparation')}
+                </NavLink>
               </div>
             </div>
+
             <NavLink
               to="/my-account"
               className={({ isActive }) => `my-account links ${isActive ? 'active' : ''}`}
@@ -125,61 +109,154 @@ function Header() {
             >
               {t('about')}
             </NavLink>
-            <Link className="links logout" onClick={handleLogout}>{t('logout')}</Link>
-            {/* Simplified Language Toggle Button */}
+            <button className="links logout-btn" onClick={handleLogout}>{t('logout')}</button>
             <button
-              className="toggle-lang links"
+              className="toggle-lang links lang-btn"
               onClick={toggleLanguage}
             >
               {currentLang === 'en' ? 'አማርኛ' : 'English'}
             </button>
           </nav>
+        </div>
+      </header>
 
-          {/* Right logo */}
-          <div className="cap right-cap">
-            <img className="kidopia " src="/images/kidopia-logo.png" alt="KIDOPIA" />
+      {/* Mobile Header */}
+      <header className="mobile-header">
+        <div className="mobile-header-row">
+          <div className="mobile-logo-container">
+            <img src="/images/w.jpg" className="mobile-logo-img" alt="Daily Blog" />
+          </div>
+          
+          <div className="mobile-hamburger-container">
+            <button
+              ref={hamburgerRef}
+              className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`}
+              onClick={toggleMobileMenu}
+              aria-label="Toggle menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Hamburger Row - Second Row */}
-      <div className="hamburger-row">
-        <button
-          ref={hamburgerRef}
-          className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`}
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+      {/* Mobile Navigation - Full Screen Overlay */}
+      <nav
+        ref={mobileNavRef}
+        className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}
+      >
+        <div className="mobile-nav-header">
+          <img src="/images/w.jpg" className="mobile-logo" alt="Daily Blog" />
+          <button className="mobile-close-btn" onClick={closeMobileMenu}>
+            ✕
+          </button>
+        </div>
 
-        {/* Mobile Navigation */}
-        <nav
-          ref={mobileNavRef}
-          className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}
-        >
-          {/* Mobile Dropdown Container */}
-          <div className="mobile-dropdown-container">
-            <button className="mobile-dropdown-btn" onClick={toggleMobileDropdown}>
-              {t('Category')} {isDropdownOpen ? '▴' : '▾'}
-            </button>
-            {/* Dropdown content now appears right below the button */}
-            <div className={`mobile-dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
-              <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/adventure" onClick={closeMobileMenu}>{t('adventureGames')}</NavLink>
-              <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/education" onClick={closeMobileMenu}>{t('educationGames')}</NavLink>
-              <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/puzzle" onClick={closeMobileMenu}>{t('puzzleGames')}</NavLink>
-              <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/reflex" onClick={closeMobileMenu}>{t('reflexGames')}</NavLink>
-              <NavLink className={({ isActive }) => `categorys ${isActive ? 'active' : ''}`} to="/category/sports" onClick={closeMobileMenu}>{t('sportsGames')}</NavLink>
+        <div className="mobile-nav-content">
+          {/* Home Link */}
+          <NavLink 
+            className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`} 
+            to="/" 
+            onClick={closeMobileMenu}
+          >
+            {t('home')}
+          </NavLink>
+
+          {/* Categories Section - ONLY IN MOBILE DROPDOWN */}
+          <div className="mobile-category-section">
+            <div className="mobile-category-header">
+              <h3>{t('categories')}</h3>
             </div>
-            <NavLink className={({ isActive }) => `mobile-dropdown-btn links my-account ${isActive ? 'active' : ''}`} to="/my-account" onClick={closeMobileMenu}>{t('myAccount')}</NavLink>
-            <NavLink className={({ isActive }) => `mobile-dropdown-btn links ${isActive ? 'active' : ''}`} to="/about" onClick={closeMobileMenu}>{t('about')}</NavLink>
-            <button className="mobile-dropdown-btn active  logout" onClick={() => { handleLogout(); closeMobileMenu(); }}>{t('logout')}</button>
+            
+            <NavLink 
+              className={({ isActive }) => `mobile-nav-item category-item ${isActive ? 'active' : ''}`} 
+              to="/category/health-tips" 
+              onClick={closeMobileMenu}
+            >
+              <span className="category-icon">💄</span>
+              {t('healthTips')}
+            </NavLink>
+
+            <NavLink 
+              className={({ isActive }) => `mobile-nav-item category-item ${isActive ? 'active' : ''}`} 
+              to="/category/sport-news" 
+              onClick={closeMobileMenu}
+            >
+              <span className="category-icon">⚽</span>
+              {t('sportNews')}
+            </NavLink>
+
+            <NavLink 
+              className={({ isActive }) => `mobile-nav-item category-item ${isActive ? 'active' : ''}`} 
+              to="/category/food-preparation" 
+              onClick={closeMobileMenu}
+            >
+              <span className="category-icon">🍴</span>
+              {t('foodPreparation')}
+            </NavLink>
           </div>
-        </nav>
-      </div>
-    </div>
+
+          {/* Account & Other Links */}
+          <div className="mobile-account-section">
+            <NavLink 
+              className={({ isActive }) => `mobile-nav-item account-item ${isActive ? 'active' : ''}`} 
+              to="/my-account" 
+              onClick={closeMobileMenu}
+            >
+              <span className="account-icon">👤</span>
+              {t('myAccount')}
+            </NavLink>
+
+            <NavLink 
+              className={({ isActive }) => `mobile-nav-item account-item ${isActive ? 'active' : ''}`} 
+              to="/about" 
+              onClick={closeMobileMenu}
+            >
+              <span className="account-icon">ℹ️</span>
+              {t('about')}
+            </NavLink>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="mobile-actions-section">
+            <button 
+              className="mobile-nav-item language-btn" 
+              onClick={() => {
+                toggleLanguage();
+                closeMobileMenu();
+              }}
+            >
+              <span className="action-icon">🌐</span>
+              {currentLang === 'en' ? 'Switch to Amharic' : 'Switch to English'}
+            </button>
+
+            <button 
+              className="mobile-nav-item logout-btn" 
+              onClick={() => {
+                handleLogout();
+                closeMobileMenu();
+              }}
+            >
+              <span className="action-icon">🚪</span>
+              {t('logout')}
+            </button>
+          </div>
+
+          {/* Subscription Info */}
+          <div className="mobile-subscription-info">
+            <div className="subscription-badge">
+              <span className="badge-icon">⭐</span>
+              Daily Subscription Blog
+            </div>
+            <p className="subscription-text">
+              Get fresh content every day!
+            </p>
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }
 

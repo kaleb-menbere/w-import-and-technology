@@ -1,24 +1,24 @@
 main {
-    padding-top: 12vh; /* push content below the fixed header */
+    padding-top: 14vh; /* push content below the fixed header */
     width: 100%;
   }
 
 @media(max-width: 480px){
     main {
-        padding-top: 6vh; /* push content below the fixed header */
+        padding-top: 8vh; /* push content below the fixed header */
         width: 100%;
       } 
 }
 
 @media (max-width: 768px) {
     main {
-        padding-top: 12vh; /* push content below the fixed header */
+        padding-top: 14vh; /* push content below the fixed header */
         width: 100%;
       } 
 }
 @media (max-width: 1024px) {
     main {
-        padding-top: 12vh; /* push content below the fixed header */
+        padding-top: 14vh; /* push content below the fixed header */
         width: 100%;
       } 
 }

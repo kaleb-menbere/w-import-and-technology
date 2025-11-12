@@ -120,6 +120,17 @@ export const LanguageProvider = ({ children }) => {
       failedToLoad: "Failed to load data.",
       noGamesAvailable: "No games available yet",
       in: "in",
+      categories: 'Categories',
+      healthTips: 'Health & Beauty',
+      sportNews: 'Sports News',
+      foodPreparation: 'Food & Recipes',
+      // Subcategories (you can use these in your category pages)
+      beautyTips: 'Beauty Tips',
+      healthAdvice: 'Health Advice',
+      foreignSports: 'International Sports',
+      localSports: 'Local Sports',
+      ethiopianFood: 'Ethiopian Traditional',
+      foreignFood: 'International Cuisine'
     },
     am: {
       home: "ዋና ገፅ",
@@ -224,6 +235,17 @@ export const LanguageProvider = ({ children }) => {
       failedToLoad: "መረጃ መጫን አልተሳካም።",
       noGamesAvailable: "ጨዋታዎች አልተገኙም።",
       in: "በ",
+      categories: 'ምድቦች',
+      healthTips: 'ጤና እና ውበት',
+      sportNews: 'ስፖርት ዜና',
+      foodPreparation: 'ምግብ አሰራር',
+      // Subcategories in Amharic
+      beautyTips: 'ውበት ምክሮች',
+      healthAdvice: 'ጤና ምክሮች',
+      foreignSports: 'የውጭ ስፖርት',
+      localSports: 'የአገር ውስጥ ስፖርት',
+      ethiopianFood: 'ባህላዊ ምግብ',
+      foreignFood: 'የውጭ ምግብ'
     }
   };
 
