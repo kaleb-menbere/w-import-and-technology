@@ -378,7 +378,6 @@
 }
 
 .card-title a:hover {
-  color: var(--primary-red);
   transform: translateX(5px);
 }
 

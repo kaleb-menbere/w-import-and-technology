@@ -116,7 +116,7 @@ export default function WImportAndTechnologyLogin() {
       <section className="w-import-hero">
         <div className="w-import-container w-import-hero-inner">
           <div className="w-import-hero-left">
-            <img src="/images/images.svg" alt="Characters" />
+            <img src="/images/w.jpg" alt="Characters" />
           </div>
 
           <div className="w-import-card">
