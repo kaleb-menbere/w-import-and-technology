@@ -7,6 +7,81 @@ function Category() {
   const { categoryName } = useParams();
   const { t, language } = useLanguage();
 
+  // New content you provided
+  const newPosts = [
+    // Sports News Posts
+    {
+      id: 100,
+      title: language === 'am' ? "ሮናልዶ፣ ሜሲ እና ሞድሪች በ2006 እና በ2026 ዓለም ዋንጫ በብቸኝነት" : "Ronaldo, Messi and Modric to play in 2006 and 2026 World Cups",
+      excerpt: language === 'am' ? "ከ20 ዓመት በፊት የነበሩት ሦስቱ ከዋክብት ብቻ ከሁለት አስርት ዓመታት በኋላ በትልቁ መድረክ ሀገራቸውን ይወክላሉ። ሊዮኔል ሜሲ እና ክርስቲያኖ ሮናልዶ ከ2006 ጀምሮ እስከ 2026 ለ6 ተከታታይ ዓለም ዋንጫዎች በመካፈል ብቸኛ ሲሆኑ..." : "The three stars from 20 years ago will be the only ones to represent their countries on the big stage after two decades. Lionel Messi and Cristiano Ronaldo are the only players to have played in six consecutive World Cups from 2006 to 2026...",
+      category: "sport-news",
+      image: "/images/worldcup.jpg",
+      author: language === 'am' ? "የስፖርት ዘጋቢ" : "Sports Reporter",
+      date: "2024-01-16",
+      readTime: language === 'am' ? "5 ደቂቃ ንባብ" : "5 min read",
+      likes: 289
+    },
+    {
+      id: 101,
+      title: language === 'am' ? "ቅዱስ ጊዮርጊስ ከ ኢትዮጵያ መድን" : "St. George vs. Ethiopia Medan",
+      excerpt: language === 'am' ? "በሲቢኢ የኢትዮጵያ ፕሪሚየር ሊግ ተስተካካይ መርኃ ግብር ቅዱስ ጊዮርጊስ ከ ኢትዮጵያ መድን በአዲስ አበባ ስታድየም ቀን 9 ሰዓት ይጫወታሉ። በ2ኛ ሳምንት መደረግ የነበረበትና ኢትዮጵያ መድን በአፍሪካ ቻምፒየንስ ሊግ ተሳታፊ በመሆኑ ለሌላ ጊዜ የተላለፈው ጨዋታ..." : "In the CBE Ethiopian Premier League match schedule, St. George will play against Ethiopia Medan at Addis Ababa Stadium at 9:00 AM. The match, which was supposed to be played in the 2nd week and was postponed due to Ethiopia Medan participating in the African Champions League...",
+      category: "sport-news",
+      image: "/images/st-george-medan.jpg",
+      author: language === 'am' ? "የእግር ኳስ ዘጋቢ" : "Football Reporter",
+      date: "2024-01-15",
+      readTime: language === 'am' ? "3 ደቂቃ ንባብ" : "3 min read",
+      likes: 198
+    },
+    {
+      id: 102,
+      title: language === 'am' ? "የወቅቱ የፕላኔታችን ምርጦቹ ሚክስድ ማርሻል አርቲስቶች" : "The best mixed martial artists on the planet right now",
+      excerpt: language === 'am' ? "ሁለቱም የሚፈላለጉ ሲሆን ኢሊያ ወደ ዋልተርዌይት ከሄደ ምናልባት በኃይት ሀውስ በሚዘጋጀው የ UFC ኢቨንት ላይ እርስ በእርስ ሲፋለሙ ልንመለከታቸው እንችላለን" : "Both are in demand, and if Ilya goes to Wolverhampton, we could probably see them fight each other at a UFC event in the White House.",
+      category: "sport-news",
+      image: "/images/mma-fighters.jpg",
+      author: language === 'am' ? "የማርሻል አርትስ አመራር" : "Martial Arts Expert",
+      date: "2024-01-14",
+      readTime: language === 'am' ? "4 ደቂቃ ንባብ" : "4 min read",
+      likes: 145
+    },
+
+    // Health Tips Posts
+    {
+      id: 103,
+      title: language === 'am' ? "ጤናማ አመጋገብ ይመገቡ" : "Eat a healthy diet",
+      excerpt: language === 'am' ? "ፍራፍሬ፣ አትክልት፣ ጥራጥሬ፣ ለውዝ እና ሙሉ እህሎችን ጨምሮ የተለያዩ ምግቦችን ጥምረት ይመገቡ። አዋቂዎች በቀን ቢያንስ አምስት መጠን (400 ግራም) ፍራፍሬ እና አትክልት መመገብ አለባቸው።" : "Eat a combination of different foods, including fruit, vegetables, legumes, nuts and whole grains. Adults should eat at least five portions (400g) of fruit and vegetables per day.",
+      category: "health-tips",
+      image: "/images/healthy-diet.jpg",
+      author: language === 'am' ? "ዶ/ር ማርያም አለማየሁ" : "Dr. Mariam Alemayehu",
+      date: "2024-01-16",
+      readTime: language === 'am' ? "4 ደቂቃ ንባብ" : "4 min read",
+      likes: 156
+    },
+    {
+      id: 104,
+      title: language === 'am' ? "ጨውና ስኳርን ይቀንሱ" : "Consume less salt and sugar",
+      excerpt: language === 'am' ? "የጨው መጠንዎን በቀን ወደ 5 ግራም ይቀንሱ፣ ይህም ከአንድ የሻይ ማንኪያ ጋር እኩል ነው። ምግብ ሲያዘጋጁ የጨው፣ የአኩሪ አተር መረቅ፣ የዓሳ መረቅ እና ሌሎች ከፍተኛ ሶዲየም ያላቸውን ቅመሞች መጠን በመገደብ..." : "Reduce your salt intake to 5g per day, equivalent to about one teaspoon. It's easier to do this by limiting the amount of salt, soy sauce, fish sauce and other high-sodium condiments when preparing meals...",
+      category: "health-tips",
+      image: "/images/salt-sugar.jpg",
+      author: language === 'am' ? "የጤና አመራር" : "Health Expert",
+      date: "2024-01-15",
+      readTime: language === 'am' ? "6 ደቂቃ ንባብ" : "6 min read",
+      likes: 223
+    },
+
+    // Food Preparation Posts
+    {
+      id: 105,
+      title: language === 'am' ? "አንድ ሁለት የቀረች ምግብ አለች ይቺን ቀማምስና 🤌ለምሳና ለመክሰስ የማደርስልክ ይሆና..." : "Quick and Easy Leftover Food Recipes",
+      excerpt: language === 'am' ? "ከቀሩ ምግቦች ጋር ምን ማድረግ እንደሚቻል እና ጣፋጭ አሰራሮችን እንዴት መፍጠር እንደሚቻል ይማሩ..." : "Learn what to do with leftover foods and how to create delicious recipes...",
+      category: "food-preparation",
+      image: "/images/leftover-recipes.jpg",
+      author: language === 'am' ? "ሹፍ ሳምራዊት" : "Chef Samrawit",
+      date: "2024-01-16",
+      readTime: language === 'am' ? "5 ደቂቃ ንባብ" : "5 min read",
+      likes: 178
+    }
+  ];
+
   // Mock data - in real app, this would come from API based on categoryName
   const getCategoryPosts = () => {
     const allPosts = [
@@ -83,8 +158,12 @@ function Category() {
       }
     ];
 
-    // Filter posts by category
-    return allPosts.filter(post => post.category === categoryName);
+    // Filter posts by category and concatenate new posts at the front
+    const filteredPosts = allPosts.filter(post => post.category === categoryName);
+    const filteredNewPosts = newPosts.filter(post => post.category === categoryName);
+    
+    // Concatenate new posts at the front (so they show first)
+    return [...filteredNewPosts, ...filteredPosts];
   };
 
   const categoryPosts = getCategoryPosts();
@@ -95,7 +174,7 @@ function Category() {
       'health-tips': {
         title: language === 'am' ? "ጤና እና ውበት" : "Health & Beauty",
         description: language === 'am' ? "ሁሉም የጤና እና ውበት ጽሑፎች" : "All health and beauty articles",
-        icon: "💄"
+        icon: "💊"
       },
       'sport-news': {
         title: language === 'am' ? "የስፖርት ዜና" : "Sports News", 
