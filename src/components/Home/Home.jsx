@@ -6,7 +6,7 @@ function Home() {
   const { t, language } = useLanguage();
 
   // Mock data - replace with actual API data
-  const popularPosts = [
+  const ourPosts = [
     {
       id: 1,
       title: language === 'am' ? "ሮናልዶ፣ ሜሲ እና ሞድሪች በ2006 እና በ2026 ዓለም ዋንጫ በብቸኝነት" : "Ronaldo, Messi and Modric to play in 2006 and 2026 World Cups",
@@ -16,8 +16,6 @@ function Home() {
       image: "/images/worldcup.jpg",
       author: language === 'am' ? "የስፖርት ዘጋቢ" : "Sports Reporter",
       date: "2024-01-15",
-      readTime: language === 'am' ? "5 ደቂቃ ንባብ" : "5 min read",
-      likes: 289
     },
     {
       id: 2,
@@ -28,8 +26,6 @@ function Home() {
       image: "/images/healthy-diet.jpg",
       author: language === 'am' ? "ዶ/ር ማርያም አለማየሁ" : "Dr. Mariam Alemayehu",
       date: "2024-01-14",
-      readTime: language === 'am' ? "4 ደቂቃ ንባብ" : "4 min read",
-      likes: 156
     },
     {
       id: 3,
@@ -40,8 +36,6 @@ function Home() {
       image: "/images/st-george-medan.jpg",
       author: language === 'am' ? "የእግር ኳስ ዘጋቢ" : "Football Reporter",
       date: "2024-01-13",
-      readTime: language === 'am' ? "3 ደቂቃ ንባብ" : "3 min read",
-      likes: 198
     },
     {
       id: 4,
@@ -52,8 +46,6 @@ function Home() {
       image: "/images/salt-sugar.jpg",
       author: language === 'am' ? "የጤና አመራር" : "Health Expert",
       date: "2024-01-12",
-      readTime: language === 'am' ? "6 ደቂቃ ንባብ" : "6 min read",
-      likes: 223
     },
     {
       id: 5,
@@ -64,8 +56,6 @@ function Home() {
       image: "/images/mma-fighters.jpg",
       author: language === 'am' ? "የማርሻል አርትስ አመራር" : "Martial Arts Expert",
       date: "2024-01-11",
-      readTime: language === 'am' ? "4 ደቂቃ ንባብ" : "4 min read",
-      likes: 145
     },
     {
       id: 6,
@@ -76,8 +66,6 @@ function Home() {
       image: "/images/injera.jpg",
       author: language === 'am' ? "ሹፍ ማርያም" : "Chef Mariam",
       date: "2024-01-10",
-      readTime: language === 'am' ? "7 ደቂቃ ንባብ" : "7 min read",
-      likes: 278
     }
   ];
 
@@ -158,16 +146,16 @@ function Home() {
         </div>
       </section>
 
-      {/* Popular Posts Section */}
-      <section className="popular-section">
+      {/* our Posts Section */}
+      <section className="our-section">
         <div className="section-header">
-          <h2>🔥 {t('popularPosts')}</h2>
+          <h2>📰 {t('OurPosts')}</h2>
           <p>{t('mostRead')}</p>
         </div>
         
-        <div className="popular-grid">
-          {popularPosts.map((post, index) => (
-            <article key={post.id} className={`popular-card ${index === 0 ? 'featured-1' : ''}`}>
+        <div className="our-grid">
+          {ourPosts.map((post, index) => (
+            <article key={post.id} className={`our-card ${index === 0 ? 'featured-1' : ''}`}>
               <div className="card-image">
                 <img src={post.image} alt={post.title} />
                 <div className="category-badge" style={{ backgroundColor: categories.find(c => c.name === post.category)?.color }}>
@@ -187,10 +175,6 @@ function Home() {
                   <div className="author-info">
                     <span className="author-name">{post.author}</span>
                     <span className="post-date">{post.date}</span>
-                  </div>
-                  <div className="post-stats">
-                    <span className="read-time">{post.readTime}</span>
-                    <span className="likes">❤️ {post.likes} {t('likes')}</span>
                   </div>
                 </div>
               </div>

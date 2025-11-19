@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // Proxy all Frappe API endpoints
+      // Proxy all Frappe API endpoints to YOUR Frappe backend
       '/api': {
-        target: 'https://kidopia.memby.online',
+        target: 'http://196.189.155.194:8004', // ← Change this
         changeOrigin: true,
-        secure: true,
+        secure: false, // ← Change to false for HTTP
         configure: (proxy, _options) => {
           proxy.on('error', (err, _req, _res) => {
             console.log('proxy error', err);
@@ -24,19 +24,19 @@ export default defineConfig({
         },
       },
       '/method': {
-        target: 'https://kidopia.memby.online',
+        target: 'http://196.189.155.194:8004', // ← Change this
         changeOrigin: true,
-        secure: true,
+        secure: false, // ← Change to false for HTTP
       },
       '/resource': {
-        target: 'https://kidopia.memby.online',
+        target: 'http://196.189.155.194:8004', // ← Change this
         changeOrigin: true,
-        secure: true,
+        secure: false, // ← Change to false for HTTP
       },
       '/files': {
-        target: 'https://kidopia.memby.online',
+        target: 'http://196.189.155.194:8004', // ← Change this
         changeOrigin: true,
-        secure: true,
+        secure: false, // ← Change to false for HTTP
       }
     }
   }

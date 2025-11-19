@@ -49,6 +49,8 @@ function WImportAndTechnology() {
                 <MyAccount />
               </ProtectedRoute>
             } />
+           {/* Add 404 fallback */}
+           <Route path="*" element={<div>Page not found</div>} />
           </Routes>
         </main>
         

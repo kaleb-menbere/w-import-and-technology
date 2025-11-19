@@ -1,18 +1,17 @@
 import './App.css'
 import WImportAndTechnology from './components/WImportAndTechnology';
-import ScrollToTopButton from './components/ScrollToTop/ScrollToTop'; // Renamed import
+import ScrollToTopButton from './components/ScrollToTop/ScrollToTop';
 import { HashRouter as Router, useLocation } from "react-router-dom";
 import { FrappeProvider } from "frappe-react-sdk";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect } from 'react';
 
 // Use proxy URL for development, direct URL for production
-const frappeUrl = import.meta.env.DEV ? window.location.origin : 'https://w-import-and-technology.memby.online';
+const frappeUrl = import.meta.env.DEV ? 'http://196.189.155.194:8004' : 'http://amhaservice.et';
 
 console.log('Frappe URL:', frappeUrl);
 console.log('Environment:', import.meta.env.DEV ? 'development' : 'production');
 
-// Component to scroll to top on route changes
 function RouteScrollToTop() {
   const { pathname } = useLocation();
 
@@ -32,9 +31,9 @@ function App() {
     >
       <AuthProvider>
         <Router>
-          <RouteScrollToTop /> {/* This handles auto-scroll on route changes */}
+          <RouteScrollToTop />
           <WImportAndTechnology />
-          <ScrollToTopButton /> {/* This is the floating button */}
+          <ScrollToTopButton />
         </Router>
       </AuthProvider>
     </FrappeProvider>

@@ -137,7 +137,7 @@ export const LanguageProvider = ({ children }) => {
       // Homepage Translations
       searchPlaceholder: 'Search articles...',
       search: 'Search',
-      popularPosts: 'Popular Posts',
+      OurPosts: 'Our Posts',
       mostRead: 'Most read articles this week',
       viewAllPosts: 'View All Posts →',
       exploreTopics: 'Explore articles by topic',
