@@ -7,7 +7,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect } from 'react';
 
 // Use proxy URL for development, direct URL for production
-const frappeUrl = import.meta.env.DEV ? 'http://196.189.155.194:8004' : 'http://amhaservice.et';
+const frappeUrl = import.meta.env.DEV ? 'http://localhost:5173' : 'http://amhaservice.et';
 
 console.log('Frappe URL:', frappeUrl);
 console.log('Environment:', import.meta.env.DEV ? 'development' : 'production');
