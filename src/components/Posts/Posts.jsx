@@ -33,12 +33,7 @@ function Posts({
   ];
 
   return (
-    <section className="posts-section">
-      <div className="section-header">
-        <h2>{title}</h2>
-        {subtitle && <p>{subtitle}</p>}
-      </div>
-      
+    <section className="posts-section">    
       <div className="posts-grid">
         {posts.length > 0 ? (
           posts.map((post, index) => (
@@ -63,10 +58,6 @@ function Posts({
                   <div className="author-info">
                     <span className="author-name">{post.author}</span>
                     <span className="post-date">{post.date}</span>
-                  </div>
-                  <div className="post-stats">
-                    <span className="read-time">{post.readTime}</span>
-                    <span className="likes">❤️ {post.likes} {t('likes')}</span>
                   </div>
                 </div>
               </div>
