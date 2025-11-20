@@ -17,7 +17,7 @@ function Category() {
     }
   }, [currentLang]);
 
-  // Fetch posts from Frappe - use EXACT field names
+  // Fetch posts from Frappe with better error handling
   const { data: posts, isLoading, error } = useFrappeGetDocList('Post', {
     fields: ['name', 'title', 'titleam', 'description', 'descriptionam', 'image', 'postcategory'],
     filters: [['postcategory', '=', categoryName]],
@@ -25,14 +25,15 @@ function Category() {
   });
 
   console.log('Posts from Frappe:', posts);
+  console.log('Error:', error);
 
-  // Format posts with correct field names
+  // Safe formatting with fallbacks
   const formattedPosts = (posts || []).map(post => ({
-    id: post.name,
-    title: currentLanguage === 'am' ? (post.titleam || post.title) : post.title,
-    excerpt: currentLanguage === 'am' ? (post.descriptionam || post.description) : post.description,
+    id: post?.name || `post-${Math.random()}`,
+    title: currentLanguage === 'am' ? (post?.titleam || post?.title || 'No title') : (post?.title || 'No title'),
+    excerpt: currentLanguage === 'am' ? (post?.descriptionam || post?.description || 'No description') : (post?.description || 'No description'),
     category: categoryName,
-    image: post.image
+    image: post?.image || '/default-image.jpg'
   }));
 
   // Category info
@@ -58,6 +59,19 @@ function Category() {
     icon: "📁"
   };
 
+  // Check if we have a network or SDK error
+  if (error) {
+    return (
+      <div className="category-page">
+        <div className="error-message">
+          <h2>{currentLanguage === 'am' ? "ስህተት ተፈጥሯል" : "An error occurred"}</h2>
+          <p>{currentLanguage === 'am' ? "ጽሑፎችን ማምጣት አልተሳካም" : "Failed to load posts"}</p>
+          <p>{error?.message || 'Unknown error'}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="category-page">
       {/* Category Header */}
@@ -74,11 +88,9 @@ function Category() {
 
       {/* Posts Component */}
       {isLoading ? (
-        <p>{currentLanguage === 'am' ? "በመጫን ላይ..." : "Loading posts..."}</p>
-      ) : error ? (
-        <p className="error-message">
-          {currentLanguage === 'am' ? "ጽሑፎችን ማምጣት አልተሳካም" : "Failed to load posts"}
-        </p>
+        <div className="loading-container">
+          <p>{currentLanguage === 'am' ? "በመጫን ላይ..." : "Loading posts..."}</p>
+        </div>
       ) : (
         <Posts
           posts={formattedPosts}
