@@ -53,13 +53,6 @@ function Posts({
                   <Link to={`/post/${post.id}`}>{post.title}</Link>
                 </h3>
                 <p className="card-excerpt">{post.excerpt}</p>
-                
-                <div className="card-meta">
-                  <div className="author-info">
-                    <span className="author-name">{post.author}</span>
-                    <span className="post-date">{post.date}</span>
-                  </div>
-                </div>
               </div>
             </article>
           ))

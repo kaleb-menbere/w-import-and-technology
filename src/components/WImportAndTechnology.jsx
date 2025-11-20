@@ -7,6 +7,7 @@ import Footer from "./Footer/Footer";
 import Login from "./Login/Login";
 import Category from "./Category/Category";
 import TermsAndConditions from "./TermsAndConditions/TermsAndConditions";
+import PostDetails from "./PostDetails/PostDetails";
 import MyAccount from "./MyAccount/MyAccount";
 import ProtectedRoute from "./ProtectedRoute";
 import { Routes, Route, useLocation } from "react-router-dom"; 
@@ -42,6 +43,11 @@ function WImportAndTechnology() {
             <Route path="/category/:categoryName" element={
               <ProtectedRoute>
                 <Category />
+              </ProtectedRoute>
+            } />
+            <Route path="/post/:postId" element={
+              <ProtectedRoute>
+                <PostDetails />
               </ProtectedRoute>
             } />
             <Route path="/my-account" element={

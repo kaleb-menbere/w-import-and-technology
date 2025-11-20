@@ -7,15 +7,15 @@ import { useEffect, useState } from 'react';
 
 function Category() {
   const { categoryName } = useParams();
-  const { language } = useLanguage();
+  const { currentLang } = useLanguage();
   
   const [currentLanguage, setCurrentLanguage] = useState('en');
 
   useEffect(() => {
-    if (language) {
-      setCurrentLanguage(language);
+    if (currentLang) {
+      setCurrentLanguage(currentLang);
     }
-  }, [language]);
+  }, [currentLang]);
 
   // Fetch posts from Frappe - use EXACT field names
   const { data: posts, isLoading, error } = useFrappeGetDocList('Post', {
@@ -32,11 +32,7 @@ function Category() {
     title: currentLanguage === 'am' ? (post.titleam || post.title) : post.title,
     excerpt: currentLanguage === 'am' ? (post.descriptionam || post.description) : post.description,
     category: categoryName,
-    image: post.image,
-    author: "Author", // You don't have author field, use default
-    date: "2024-01-01", // You don't have date field, use default
-    readTime: "5 min read", // You don't have read_time field, use default
-    likes: 0 // You don't have likes field, use default
+    image: post.image
   }));
 
   // Category info
@@ -57,8 +53,8 @@ function Category() {
       icon: "💊"
     }
   }[categoryName] || {
-    title: "Category",
-    description: "All articles in this category", 
+    title: currentLanguage === 'am' ? "ምድብ" : "Category",
+    description: currentLanguage === 'am' ? "ሁሉም የዚህ ምድብ ጽሑፎች" : "All articles in this category", 
     icon: "📁"
   };
 
@@ -80,7 +76,9 @@ function Category() {
       {isLoading ? (
         <p>{currentLanguage === 'am' ? "በመጫን ላይ..." : "Loading posts..."}</p>
       ) : error ? (
-        <p className="error-message">Failed to load posts</p>
+        <p className="error-message">
+          {currentLanguage === 'am' ? "ጽሑፎችን ማምጣት አልተሳካም" : "Failed to load posts"}
+        </p>
       ) : (
         <Posts
           posts={formattedPosts}

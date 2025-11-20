@@ -1,73 +1,27 @@
 import './Home.css';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { useFrappeGetDocList } from 'frappe-react-sdk';
+import Posts from '../Posts/Posts'; // Import the Posts component
 
 function Home() {
   const { t, language } = useLanguage();
 
-  // Mock data - replace with actual API data
-  const ourPosts = [
-    {
-      id: 1,
-      title: language === 'am' ? "ሮናልዶ፣ ሜሲ እና ሞድሪች በ2006 እና በ2026 ዓለም ዋንጫ በብቸኝነት" : "Ronaldo, Messi and Modric to play in 2006 and 2026 World Cups",
-      excerpt: language === 'am' ? "ከ20 ዓመት በፊት የነበሩት ሦስቱ ከዋክብት ብቻ ከሁለት አስርት ዓመታት በኋላ በትልቁ መድረክ ሀገራቸውን ይወክላሉ..." : "The three stars from 20 years ago will be the only ones to represent their countries on the big stage after two decades...",
-      category: "sport-news",
-      subcategory: "football",
-      image: "/images/worldcup.jpg",
-      author: language === 'am' ? "የስፖርት ዘጋቢ" : "Sports Reporter",
-      date: "2024-01-15",
-    },
-    {
-      id: 2,
-      title: language === 'am' ? "ጤናማ አመጋገብ ይመገቡ" : "Eat a healthy diet",
-      excerpt: language === 'am' ? "ፍራፍሬ፣ አትክልት፣ ጥራጥሬ፣ ለውዝ እና ሙሉ እህሎችን ጨምሮ የተለያዩ ምግቦችን ጥምረት ይመገቡ..." : "Eat a combination of different foods, including fruit, vegetables, legumes, nuts and whole grains...",
-      category: "health-tips", 
-      subcategory: "nutrition",
-      image: "/images/healthy-diet.jpg",
-      author: language === 'am' ? "ዶ/ር ማርያም አለማየሁ" : "Dr. Mariam Alemayehu",
-      date: "2024-01-14",
-    },
-    {
-      id: 3,
-      title: language === 'am' ? "ቅዱስ ጊዮርጊስ ከ ኢትዮጵያ መድን" : "St. George vs. Ethiopia Medan",
-      excerpt: language === 'am' ? "በሲቢኢ የኢትዮጵያ ፕሪሚየር ሊግ ተስተካካይ መርኃ ግብር ቅዱስ ጊዮርጊስ ከ ኢትዮጵያ መድን በአዲስ አበባ ስታድየም ቀን 9 ሰዓት ይጫወታሉ..." : "In the CBE Ethiopian Premier League match schedule, St. George will play against Ethiopia Medan at Addis Ababa Stadium at 9:00 AM...",
-      category: "sport-news",
-      subcategory: "local-sports",
-      image: "/images/st-george-medan.jpg",
-      author: language === 'am' ? "የእግር ኳስ ዘጋቢ" : "Football Reporter",
-      date: "2024-01-13",
-    },
-    {
-      id: 4,
-      title: language === 'am' ? "ጨውና ስኳርን ይቀንሱ" : "Consume less salt and sugar",
-      excerpt: language === 'am' ? "የጨው መጠንዎን በቀን ወደ 5 ግራም ይቀንሱ፣ ይህም ከአንድ የሻይ ማንኪያ ጋር እኩል ነው..." : "Reduce your salt intake to 5g per day, equivalent to about one teaspoon...",
-      category: "health-tips",
-      subcategory: "nutrition",
-      image: "/images/salt-sugar.jpg",
-      author: language === 'am' ? "የጤና አመራር" : "Health Expert",
-      date: "2024-01-12",
-    },
-    {
-      id: 5,
-      title: language === 'am' ? "የወቅቱ የፕላኔታችን ምርጦቹ ሚክስድ ማርሻል አርቲስቶች" : "The best mixed martial artists on the planet right now",
-      excerpt: language === 'am' ? "ሁለቱም የሚፈላለጉ ሲሆን ኢሊያ ወደ ዋልተርዌይት ከሄደ ምናልባት በኃይት ሀውስ በሚዘጋጀው የ UFC ኢቨንት ላይ እርስ በእርስ ሲፋለሙ ልንመለከታቸው እንችላለን..." : "Both are in demand, and if Ilya goes to Wolverhampton, we could probably see them fight each other at a UFC event in the White House...",
-      category: "sport-news",
-      subcategory: "mma",
-      image: "/images/mma-fighters.jpg",
-      author: language === 'am' ? "የማርሻል አርትስ አመራር" : "Martial Arts Expert",
-      date: "2024-01-11",
-    },
-    {
-      id: 6,
-      title: language === 'am' ? "ባህላዊ የኢትዮጵያ እንጀራ አሰራር" : "Traditional Ethiopian Injera Recipe",
-      excerpt: language === 'am' ? "በደረጃ በደረጃ መመሪያችን በቤት ሙሉ እንጀራ ለመስራት ይማሩ..." : "Learn the authentic way to make perfect injera at home with our step-by-step guide...",
-      category: "food-preparation",
-      subcategory: "ethiopian-food",
-      image: "/images/injera.jpg",
-      author: language === 'am' ? "ሹፍ ማርያም" : "Chef Mariam",
-      date: "2024-01-10",
-    }
-  ];
+  // Fetch recent posts from Frappe
+  const { data: posts, isLoading, error } = useFrappeGetDocList('Post', {
+    fields: ['name', 'title', 'titleam', 'description', 'descriptionam', 'image', 'postcategory'],
+    orderBy: { field: 'creation', order: 'desc' },
+    limit: 3
+  });
+
+  // Format posts for display
+  const formattedPosts = (posts || []).map(post => ({
+    id: post.name,
+    title: language === 'am' ? (post.titleam || post.title) : post.title,
+    excerpt: language === 'am' ? (post.descriptionam || post.description) : post.description,
+    category: post.postcategory,
+    image: post.image || "/images/placeholder.jpg"
+  }));
 
   const categories = [
     {
@@ -76,7 +30,7 @@ function Home() {
       description: language === 'am' ? "ለጤና እና ውበት ምክሮች" : "Tips for wellness and beauty",
       icon: "💊",
       color: "#811114",
-      count: 24
+      count: formattedPosts.filter(post => post.category === 'health-tips').length
     },
     {
       name: "sport-news", 
@@ -84,7 +38,7 @@ function Home() {
       description: language === 'am' ? "አካባቢያዊ እና ዓለም አቀፍ ስፖርቶች" : "Local and international sports",
       icon: "⚽",
       color: "#2E7D32",
-      count: 18
+      count: formattedPosts.filter(post => post.category === 'sport-news').length
     },
     {
       name: "food-preparation",
@@ -92,9 +46,27 @@ function Home() {
       description: language === 'am' ? "ባህላዊ እና ዓለም አቀፍ ምግቦች" : "Traditional and international cuisine",
       icon: "🍴",
       color: "#FF6B35",
-      count: 32
+      count: formattedPosts.filter(post => post.category === 'food-preparation').length
     }
   ];
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="homepage">
+        <div className="loading">Loading posts...</div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="homepage">
+        <div className="error">Failed to load posts: {error.message}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="homepage">
@@ -146,47 +118,19 @@ function Home() {
         </div>
       </section>
 
-      {/* our Posts Section */}
+      {/* Recent Posts Section using Posts component */}
       <section className="our-section">
         <div className="section-header">
           <h2>📰 {t('OurPosts')}</h2>
           <p>{t('mostRead')}</p>
         </div>
         
-        <div className="our-grid">
-          {ourPosts.map((post, index) => (
-            <article key={post.id} className={`our-card ${index === 0 ? 'featured-1' : ''}`}>
-              <div className="card-image">
-                <img src={post.image} alt={post.title} />
-                <div className="category-badge" style={{ backgroundColor: categories.find(c => c.name === post.category)?.color }}>
-                  {categories.find(c => c.name === post.category)?.icon}
-                  {post.category === 'health-tips' ? t('health') : 
-                   post.category === 'sport-news' ? t('sports') : t('food')}
-                </div>
-              </div>
-              
-              <div className="card-content">
-                <h3 className="card-title">
-                  <Link to={`/post/${post.id}`}>{post.title}</Link>
-                </h3>
-                <p className="card-excerpt">{post.excerpt}</p>
-                
-                <div className="card-meta">
-                  <div className="author-info">
-                    <span className="author-name">{post.author}</span>
-                    <span className="post-date">{post.date}</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="section-footer">
-          <Link to="/posts" className="view-all-btn">
-            {t('viewAllPosts')}
-          </Link>
-        </div>
+        <Posts 
+          posts={formattedPosts}
+          title={t('OurPosts')}
+          subtitle={t('mostRead')}
+          showViewAll={false} // Remove View All button as requested
+        />
       </section>
 
       {/* Categories Section */}
