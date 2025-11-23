@@ -49,13 +49,92 @@ export default function WImportAndTechnologyLogin() {
     return cleanPhone.length >= 9 && cleanPhone.length <= 15;
   };
 
+  // Function to translate common error messages
+  const translateErrorMessage = (message) => {
+    if (!message) return currentLang === 'am' ? 'ስህተት ተፈጥሯል' : 'An error occurred';
+
+    const lowerMessage = message.toLowerCase();
+
+    // Common error message translations
+    const errorTranslations = {
+      'en': {
+        'invalid otp': 'Invalid OTP. Please check and try again.',
+        'wrong otp': 'Wrong OTP. Please check and try again.',
+        'incorrect otp': 'Incorrect OTP. Please try again.',
+        'otp expired': 'OTP has expired. Please request a new one.',
+        'user not found': 'User not found. Please check your phone number.',
+        'maximum attempts exceeded': 'Maximum OTP attempts exceeded. Please try again later.',
+        'please request an otp first': 'Please request an OTP first.',
+        'subscription not found': 'Subscription not found. Please contact support.',
+        'network error': 'Network error. Please check your connection.',
+        'unexpected error': 'An unexpected error occurred. Please try again.',
+        'invalid password': 'Invalid OTP. Please check and try again.',
+        'not found': 'User not found. Please check your phone number.',
+        'no subscription': 'No active subscription found. Please contact support.',
+        'service unavailable': 'Service temporarily unavailable. Please try again later.',
+        'server error': 'Server error. Please try again later.',
+        'timeout': 'Request timeout. Please check your connection and try again.'
+      },
+      'am': {
+        'invalid otp': 'የተሳሳተ ኦቲፒ። እባክዎ ያረጋግጡ እና እንደገና ይሞክሩ።',
+        'wrong otp': 'የተሳሳተ ኦቲፒ። እባክዎ ያረጋግጡ እና እንደገና ይሞክሩ።',
+        'incorrect otp': 'የተሳሳተ ኦቲፒ። እባክዎ እንደገና ይሞክሩ።',
+        'otp expired': 'ኦቲፒ ጊዜው አልፎበታል። እባክዎ አዲስ ይጠይቁ።',
+        'user not found': 'ተጠቃሚ አልተገኘም። እባክዎ ስልክ ቁጥርዎን ያረጋግጡ።',
+        'maximum attempts exceeded': 'ከፍተኛው የኦቲፒ ሙከራ ቁጥር ተሻግሯል። እባክዎ ቆይተው እንደገና ይሞክሩ።',
+        'please request an otp first': 'እባክዎ መጀመሪያ ኦቲፒ ይጠይቁ።',
+        'subscription not found': 'የደንበኝነት ምዝገባ አልተገኘም። እባክዎ ከድጋፍ ቡድናችን ጋር ይገናኙ።',
+        'network error': 'የኔትወርክ ስህተት። እባክዎ ግንኙነትዎን ያረጋግጡ።',
+        'unexpected error': 'ያልተጠበቀ ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።',
+        'invalid password': 'የተሳሳተ ኦቲፒ። እባክዎ ያረጋግጡ እና እንደገና ይሞክሩ።',
+        'not found': 'ተጠቃሚ አልተገኘም። እባክዎ ስልክ ቁጥርዎን ያረጋግጡ።',
+        'no subscription': 'ንቁ የደንበኝነት ምዝገባ አልተገኘም። እባክዎ ከድጋፍ ቡድናችን ጋር ይገናኙ።',
+        'service unavailable': 'አገልግሎት በጊዜው አይገኝም። እባክዎ ቆይተው እንደገና ይሞክሩ።',
+        'server error': 'የሰርቨር ስህተት። እባክዎ ቆይተው እንደገና ይሞክሩ።',
+        'timeout': 'የጥያቄ ጊዜ አልፎበታል። እባክዎ ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።'
+      }
+    };
+
+    // First, check for exact matches in common error messages
+    for (const [key, value] of Object.entries(errorTranslations[currentLang])) {
+      if (lowerMessage.includes(key)) {
+        return value;
+      }
+    }
+
+    // If no match found, try to handle specific patterns
+    if ((lowerMessage.includes('invalid') || lowerMessage.includes('wrong') || lowerMessage.includes('incorrect')) && 
+        (lowerMessage.includes('otp') || lowerMessage.includes('password') || lowerMessage.includes('pin'))) {
+      return currentLang === 'am' 
+        ? 'የተሳሳተ ኦቲፒ። እባክዎ ያረጋግጡ እና እንደገና ይሞክሩ።'
+        : 'Invalid OTP. Please check and try again.';
+    }
+
+    if (lowerMessage.includes('expired') && lowerMessage.includes('otp')) {
+      return currentLang === 'am' 
+        ? 'ኦቲፒ ጊዜው አልፎበታል። እባክዎ አዲስ ይጠይቁ።'
+        : 'OTP has expired. Please request a new one.';
+    }
+
+    if (lowerMessage.includes('user') && lowerMessage.includes('not found')) {
+      return currentLang === 'am' 
+        ? 'ተጠቃሚ አልተገኘም። እባክዎ ስልክ ቁጥርዎን ያረጋግጡ።'
+        : 'User not found. Please check your phone number.';
+    }
+
+    // If no specific translation found, return the original message
+    return message;
+  };
+
   // Helper function to extract error message from Frappe exception
   const extractFrappeErrorMessage = (error) => {
     console.log("Raw error object for debugging:", error);
 
     // Check if it's a Frappe "Subscription not found" error in exception field
     if (error?.exception?.includes("Subscription not found")) {
-      return "Subscription not found. Please contact support.";
+      return currentLang === 'am' 
+        ? "የደንበኝነት ምዝገባ አልተገኘም። እባክዎ ከድጋፍ ቡድናችን ጋር ይገናኙ።"
+        : "Subscription not found. Please contact support.";
     }
 
     // Check _server_messages for Frappe errors
@@ -65,9 +144,13 @@ export default function WImportAndTechnologyLogin() {
         if (Array.isArray(serverMessages) && serverMessages.length > 0) {
           const firstMessage = JSON.parse(serverMessages[0]);
           if (firstMessage.message?.includes("Subscription not found")) {
-            return "Subscription not found. Please contact support.";
+            return currentLang === 'am'
+              ? "የደንበኝነት ምዝገባ አልተገኘም። እባክዎ ከድጋፍ ቡድናችን ጋር ይገናኙ።"
+              : "Subscription not found. Please contact support.";
           }
-          return firstMessage.message || "An error occurred";
+          // Translate other common Frappe errors
+          const message = firstMessage.message || "An error occurred";
+          return translateErrorMessage(message);
         }
       } catch (e) {
         console.error("Error parsing server messages:", e);
@@ -75,15 +158,19 @@ export default function WImportAndTechnologyLogin() {
     }
 
     // Handle regular error formats
-    if (typeof error === 'string') return error;
-    if (error?.message) {
-      if (typeof error.message === 'string') return error.message;
-      if (error.message.message) return error.message.message;
+    let errorMessage = "";
+    if (typeof error === 'string') errorMessage = error;
+    else if (error?.message) {
+      if (typeof error.message === 'string') errorMessage = error.message;
+      else if (error.message.message) errorMessage = error.message.message;
     }
-    if (error?.error) return error.error;
-    if (error?.data?.message) return error.data.message;
-    
-    return "An unexpected error occurred. Please try again.";
+    else if (error?.error) errorMessage = error.error;
+    else if (error?.data?.message) errorMessage = error.data.message;
+    else errorMessage = currentLang === 'am' 
+      ? 'ያልተጠበቀ ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።'
+      : "An unexpected error occurred. Please try again.";
+
+    return translateErrorMessage(errorMessage);
   };
 
   // --- SEND OTP ---
@@ -152,7 +239,12 @@ export default function WImportAndTechnologyLogin() {
       return;
     }
     if (!otpSent) {
-      setMessages({ error: "Please request an OTP first", success: "" });
+      setMessages({ 
+        error: currentLang === 'am' 
+          ? "እባክዎ መጀመሪያ ኦቲፒ ይጠይቁ" 
+          : "Please request an OTP first", 
+        success: "" 
+      });
       return;
     }
 
