@@ -89,7 +89,7 @@ export const LanguageProvider = ({ children }) => {
       login_btn: "LOGIN",
       trial: "Enjoy a 3-day free trial for your first Registration",
       help: "Help Desk : 251 970 305 059",
-      daily: "To subscribe daily (3 birr) send A to 9735",
+      daily: "To subscribe daily (2 birr) send A to 9735",
       logging_in: "Logging in...",
       myAccount_header: "My Account",
       phone_number: "Phone Number",
