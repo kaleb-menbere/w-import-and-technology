@@ -67,16 +67,12 @@ export const AuthProvider = ({ children }) => {
           message: result.message 
         };
       } else {
-        return { 
-          success: false, 
-          error: result?.message?.message || 'Failed to send OTP' 
-        };
+        // Return the original Frappe error structure
+        return result; // Return the full result as-is
       }
     } catch (err) {
-      return { 
-        success: false, 
-        error: err.message || 'Failed to send OTP. Please try again.' 
-      };
+      // Return the full Frappe error object
+      return err; // Return the full error as-is
     }
   };
 
@@ -98,16 +94,12 @@ export const AuthProvider = ({ children }) => {
           message: result.message 
         };
       } else {
-        return { 
-          success: false, 
-          error: result?.message?.message || 'Invalid OTP' 
-        };
+        // Return the original Frappe error structure
+        return result; // Return the full result as-is
       }
     } catch (err) {
-      return { 
-        success: false, 
-        error: err.message || 'Invalid OTP. Please try again.' 
-      };
+      // Return the full Frappe error object
+      return err; // Return the full error as-is
     }
   };
 

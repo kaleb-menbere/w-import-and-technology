@@ -49,6 +49,43 @@ export default function WImportAndTechnologyLogin() {
     return cleanPhone.length >= 9 && cleanPhone.length <= 15;
   };
 
+  // Helper function to extract error message from Frappe exception
+  const extractFrappeErrorMessage = (error) => {
+    console.log("Raw error object for debugging:", error);
+
+    // Check if it's a Frappe "Subscription not found" error in exception field
+    if (error?.exception?.includes("Subscription not found")) {
+      return "Subscription not found. Please contact support.";
+    }
+
+    // Check _server_messages for Frappe errors
+    if (error?._server_messages) {
+      try {
+        const serverMessages = JSON.parse(error._server_messages);
+        if (Array.isArray(serverMessages) && serverMessages.length > 0) {
+          const firstMessage = JSON.parse(serverMessages[0]);
+          if (firstMessage.message?.includes("Subscription not found")) {
+            return "Subscription not found. Please contact support.";
+          }
+          return firstMessage.message || "An error occurred";
+        }
+      } catch (e) {
+        console.error("Error parsing server messages:", e);
+      }
+    }
+
+    // Handle regular error formats
+    if (typeof error === 'string') return error;
+    if (error?.message) {
+      if (typeof error.message === 'string') return error.message;
+      if (error.message.message) return error.message.message;
+    }
+    if (error?.error) return error.error;
+    if (error?.data?.message) return error.data.message;
+    
+    return "An unexpected error occurred. Please try again.";
+  };
+
   // --- SEND OTP ---
   const handleSendOtp = async () => {
     if (!phone || !validatePhone(phone)) {
@@ -62,7 +99,7 @@ export default function WImportAndTechnologyLogin() {
     try {
       const res = await sendOtp("251" + phone);
 
-      // Handle the API response
+      // Handle the API response - check both success formats
       if (
         res?.success ||
         res?.message?.message === "OTP sent successfully" ||
@@ -75,18 +112,19 @@ export default function WImportAndTechnologyLogin() {
           success: t("sent_code") || "OTP Sent Successfully",
         });
       } else {
+        // res contains the raw Frappe error object
+        const errorMsg = extractFrappeErrorMessage(res);
         setMessages({
-          error: res?.error || 
-                 res?.message?.message || 
-                 res?.data?.message || 
-                 "Failed to send OTP",
+          error: errorMsg,
           success: "",
         });
         setIsSending(false);
       }
     } catch (err) {
+      // Fallback error handling
+      const errorMsg = extractFrappeErrorMessage(err);
       setMessages({ 
-        error: err?.message || "Failed to send OTP. Please try again.", 
+        error: errorMsg, 
         success: "" 
       });
       setIsSending(false);
@@ -123,7 +161,7 @@ export default function WImportAndTechnologyLogin() {
     try {
       const result = await verifyOtp("251" + phone, pin);
 
-      // ✅ UPDATED: Handle checkOTP response format
+      // Handle checkOTP response format
       if (
         result?.success ||
         result?.message?.message === "Successful OTP" ||
@@ -132,19 +170,19 @@ export default function WImportAndTechnologyLogin() {
         setMessages({ error: "", success: t("login_success") || "Login successful!" });
         setTimeout(() => navigate("/"), 1500);
       } else {
+        const errorMsg = extractFrappeErrorMessage(result);
         setMessages({
-          error: result?.error || 
-                result?.message?.message || 
-                "Invalid OTP",
+          error: errorMsg,
           success: "",
         });
       }
 
       setLocalLoading(false);
     } catch (err) {
+      const errorMsg = extractFrappeErrorMessage(err);
       setLocalLoading(false);
       setMessages({ 
-        error: err?.message || "Login failed. Please try again.", 
+        error: errorMsg, 
         success: "" 
       });
     }
@@ -200,8 +238,8 @@ export default function WImportAndTechnologyLogin() {
                   <button
                     type="button"
                     onClick={handleSendOtp}
-                    disabled={isSending || sendingOtp}
-                    className={`otp-send-btn ${isSending || sendingOtp ? "disabled" : "active"}`}
+                    disabled={isSending || sendingOtp || secondsLeft > 0}
+                    className={`otp-send-btn ${isSending || sendingOtp || secondsLeft > 0 ? "disabled" : "active"}`}
                     style={{
                       position: "absolute",
                       right: "10px",
@@ -212,8 +250,8 @@ export default function WImportAndTechnologyLogin() {
                       padding: 0,
                       fontSize: "0.9rem",
                       textDecoration: "none",
-                      color: isSending || sendingOtp ? "#999" : "#811114",
-                      cursor: isSending || sendingOtp ? "not-allowed" : "pointer",
+                      color: (isSending || sendingOtp || secondsLeft > 0) ? "#999" : "#811114",
+                      cursor: (isSending || sendingOtp || secondsLeft > 0) ? "not-allowed" : "pointer",
                       transition: "color 0.3s ease",
                     }}
                   >
