@@ -3,7 +3,6 @@ import React, { createContext, useContext, useState } from 'react';
 
 const LanguageContext = createContext();
 
-// ✅ Make sure this export is present
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
@@ -12,7 +11,6 @@ export const useLanguage = () => {
   return context;
 };
 
-// ✅ Make sure this export is present
 export const LanguageProvider = ({ children }) => {
   const [currentLang, setCurrentLang] = useState('en');
 
@@ -104,14 +102,7 @@ export const LanguageProvider = ({ children }) => {
       failedToLoad: "Failed to load data.",
       noGamesAvailable: "No games available yet",
       in: "in",
-      blog: ' Blog',
-      welcome: 'Welcome to ',
-      heroSubtitle: 'Your daily dose of health tips, sports news, and delicious recipes',
-      health: 'Health',
-      sports: 'Sports',
-      food: 'Food',
-      noPostsFound: 'No posts found',
-
+      
       // BLOG WEBSITE TRANSLATIONS
       categories: 'Categories',
       healthTips: 'Health & Beauty',
@@ -124,7 +115,7 @@ export const LanguageProvider = ({ children }) => {
       localSports: 'Local Sports',
       ethiopianFood: 'Ethiopian Traditional',
       foreignFood: 'International Cuisine',
-
+      
       // Homepage Translations
       searchPlaceholder: 'Search articles...',
       search: 'Search',
@@ -136,11 +127,8 @@ export const LanguageProvider = ({ children }) => {
       newsletterDesc: 'Get the latest articles delivered to your inbox daily',
       enterEmail: 'Enter your email address',
       subscribe: 'Subscribe',
-      health: 'Health',
-      sports: 'Sports',
-      food: 'Food',
       articles: 'articles',
-
+      
       // Blog Post Translations
       readTime: 'min read',
       likes: 'likes',
@@ -152,9 +140,8 @@ export const LanguageProvider = ({ children }) => {
       leaveComment: 'Leave a comment',
       postComment: 'Post Comment',
       loadingPosts: 'Loading posts...',
-      noPostsFound: 'No posts found',
       readMore: 'Read More',
-
+      
       // Category Pages
       allPosts: 'All Posts',
       filterBy: 'Filter by',
@@ -162,7 +149,7 @@ export const LanguageProvider = ({ children }) => {
       newestFirst: 'Newest First',
       oldestFirst: 'Oldest First',
       mostPopular: 'Most Popular',
-
+      
       // Subscription
       newsletterSuccess: 'Thank you for subscribing!',
       newsletterError: 'Subscription failed. Please try again.',
@@ -198,15 +185,13 @@ export const LanguageProvider = ({ children }) => {
       previous: 'Previous',
       next: 'Next',
       // PostDetails translations
-      loading: 'Loading...',
       errorLoadingPost: 'Error loading post',
       postNotFound: 'Post not found',
-      back: 'Back',
-      description: 'Description',
       englishContent: 'English Content',
       title: 'Title',
       backToList: 'Back to List',
       moreFromCategory: 'More from this Category',
+      showingPosts: 'Showing {start}-{end} of {total} posts'
     },
     am: {
       home: "ዋና ገፅ",
@@ -295,26 +280,7 @@ export const LanguageProvider = ({ children }) => {
       failedToLoad: "መረጃ መጫን አልተሳካም።",
       noGamesAvailable: "ጨዋታዎች አልተገኙም።",
       in: "በ",
-      blog: ' ብሎግ በደህና መጡ',
-      welcome: 'ወደ ',
-      heroSubtitle: 'የጤና ምክሮች፣ የስፖርት ዜና እና ጣፋጭ አሰራሮች ዕለታዊ ዝግጅትዎ',
-      health: 'ጤና',
-      sports: 'ስፖርት',
-      food: 'ምግብ',
-      noPostsFound: 'ጽሑፎች አልተገኙም',
-
-      allFoodArticles: 'ሁሉም የምግብ አሰራር ጽሑፎች',
-      allSportsArticles: 'ሁሉም የስፖርት ዜና ጽሑፎች',
-      allHealthArticles: 'ሁሉም የጤና እና ውበት ጽሑፎች',
-      allCategoryArticles: 'ሁሉም የዚህ ምድብ ጽሑፎች',
-      category: 'ምድብ',
-      errorOccurred: 'ስህተት ተፈጥሯል',
-      failedToLoadPosts: 'ጽሑፎችን ማምጣት አልተሳካም',
-      unknownError: 'የማይታወቅ ስህተት',
-      page: 'ገጽ',
-      of: 'ከ',
-      previous: 'ያለፈ',
-      next: 'ቀጣይ',
+      
       // BLOG WEBSITE TRANSLATIONS
       categories: 'ምድቦች',
       healthTips: 'ጤና እና ውበት',
@@ -327,7 +293,7 @@ export const LanguageProvider = ({ children }) => {
       localSports: 'የአገር ውስጥ ስፖርት',
       ethiopianFood: 'ባህላዊ ምግብ',
       foreignFood: 'የውጭ ምግብ',
-
+      
       // Homepage Translations
       searchPlaceholder: 'ጽሑፎችን ይፈልጉ...',
       search: 'ፈልግ',
@@ -339,12 +305,8 @@ export const LanguageProvider = ({ children }) => {
       newsletterDesc: 'የቅርብ ጽሑፎችን በየቀኑ በኢሜልዎ ይቀበሉ',
       enterEmail: 'ኢሜል አድራሻዎን ያስገቡ',
       subscribe: 'ይመዝገቡ',
-      health: 'ጤና',
-      sports: 'ስፖርት',
-      food: 'ምግብ',
       articles: 'ጽሑፎች',
-
-
+      
       // Blog Post Translations
       readTime: 'ደቂቃ ንባብ',
       likes: 'ውደድ',
@@ -356,9 +318,8 @@ export const LanguageProvider = ({ children }) => {
       leaveComment: 'አስተያየት ይስጡ',
       postComment: 'አስተያየት ለጥፍ',
       loadingPosts: 'ጽሑፎች በመጫን ላይ...',
-      noPostsFound: 'ጽሑፎች አልተገኙም',
       readMore: 'ተጨማሪ ያንብቡ',
-
+      
       // Category Pages
       allPosts: 'ሁሉም ጽሑፎች',
       filterBy: 'አጣራ በ',
@@ -366,7 +327,7 @@ export const LanguageProvider = ({ children }) => {
       newestFirst: 'አዲስ በመጀመሪያ',
       oldestFirst: 'የድሮ በመጀመሪያ',
       mostPopular: 'በጣም ታዋቂ',
-
+      
       // Subscription
       newsletterSuccess: 'ለመመዝገብ እናመሰግናለን!',
       newsletterError: 'መመዝገብ አልተሳካም። እባክዎ እንደገና ይሞክሩ።',
@@ -376,7 +337,7 @@ export const LanguageProvider = ({ children }) => {
       myAccount_description: 'የመለያ ቅንብሮችዎን እና የደንበኝነት ምዝገባዎን ያስተዳድሩ',
       accountInformation: 'የመለያ መረጃ',
       subscriptionManagement: 'የደንበኝነት ምዝገባ አስተዳደር',
-      manageSubscription: 'የደንበኝነት ምዝገባ አስተዳድር',
+      manageSubscription: 'የደንበኝነት ምዝገባ አስተዳደር',
       currentPlan: 'አሁን ያለው እቅድ',
       dailySubscription: 'ዕለታዊ ደንበኝነት',
       day: 'ቀን',
@@ -389,16 +350,26 @@ export const LanguageProvider = ({ children }) => {
       emailSupport: 'ኢሜል ላክ',
       callSupport: 'ይደውሉ',
       allRightsReserved: 'ሁሉም መብቶች ተጠብቀዋል',
-      loading: 'በመጫን ላይ...',
+      allFoodArticles: 'ሁሉም የምግብ አሰራር ጽሑፎች',
+      allSportsArticles: 'ሁሉም የስፖርት ዜና ጽሑፎች',
+      allHealthArticles: 'ሁሉም የጤና እና ውበት ጽሑፎች',
+      allCategoryArticles: 'ሁሉም የዚህ ምድብ ጽሑፎች',
+      category: 'ምድብ',
+      errorOccurred: 'ስህተት ተፈጥሯል',
+      failedToLoadPosts: 'ጽሑፎችን ማምጣት አልተሳካም',
+      unknownError: 'የማይታወቅ ስህተት',
+      page: 'ገጽ',
+      of: 'ከ',
+      previous: 'ያለፈ',
+      next: 'ቀጣይ',
+      // PostDetails translations
       errorLoadingPost: 'ጽሑፍ ማምጣት አልተሳካም',
       postNotFound: 'ጽሑፍ አልተገኘም',
-      back: 'ተመለስ',
-      description: 'የትረካ ማጠቃለያ',
       englishContent: 'የእንግሊዘኛ ይዘት',
       title: 'ርዕስ',
       backToList: 'ወደ ዝርዝር ተመለስ',
-      moreFromCategory: 'ተመሳሳይ ጽሑፎች'
-
+      moreFromCategory: 'ተመሳሳይ ጽሑፎች',
+      showingPosts: 'ከ{start}-{end} ከ{total} ጽሑፎች'
     }
   };
 
