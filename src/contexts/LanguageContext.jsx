@@ -53,7 +53,7 @@ export const LanguageProvider = ({ children }) => {
       ruleChangesTitle: "5. Rule Changes and Notification",
       ruleChangesContent: "Participants will be promptly notified of any rule changes.",
       contactInfoTitle: "6. Contact Information",
-      contactInfoContent: "If you have questions or concerns about our services, contact 0116166969",
+      contactInfoContent: "If you have questions or concerns about our services, contact amhagroupcontact@gmail.com",
       closingMessage: "Thank you for using W Import and Technology!",
       backButton: "Back to Home",
 
@@ -223,7 +223,7 @@ export const LanguageProvider = ({ children }) => {
       ruleChangesTitle: "5. የህግ ለውጦች",
       ruleChangesContent: "ማንኛውም ለውጥ በአፋጣኝ ይገለጻል።",
       contactInfoTitle: "6. የግንኙነት መረጃ",
-      contactInfoContent: "ጥያቄ ካለዎት በ Support@WImportAndTechnology.et ያግኙ።",
+      contactInfoContent: "ጥያቄ ካለዎት በ amhagroupcontact@gmail.com ያግኙ።",
       closingMessage: "እኛን ስለተጠቀሙ እናመሰግናለን!",
       backButton: "ወደ መነሻ ተመለስ",
 
