@@ -103,7 +103,6 @@ function PostDetails() {
             </h1>
             
             <div className="post-body">
-              <h3>{t('description')}</h3>
               <p className="post-description">
                 {getLocalizedDescription()}
               </p>
