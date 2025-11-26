@@ -124,8 +124,15 @@ function MyAccount() {
             {t('contactSupport') || "Contact support"}: <strong>0116166969</strong>
           </p>
           <div className="support-actions">
-            <button className="support-btn">📧 {t('emailSupport') || "Email Support"}</button>
-            <button className="support-btn">📞 {t('callSupport') || "Call Support"}</button>
+            {/* Email button wrapped in an anchor tag with the mailto: prefix */}
+            <a href="mailto:amhagroupcontact@gmail.com" className="support-btn" style={{ textDecoration: 'none' }}>
+              📧 {t('emailSupport') || "Email Support"}
+            </a>
+            
+            {/* Call button wrapped in an anchor tag with the tel: prefix */}
+            <a href="tel:0116166969" className="support-btn" style={{ textDecoration: 'none' }}>
+              📞 {t('callSupport') || "Call Support"}
+            </a>
           </div>
         </div>
       </div>

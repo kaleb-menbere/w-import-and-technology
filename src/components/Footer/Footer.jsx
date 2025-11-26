@@ -21,7 +21,7 @@ function Footer() {
             </div>
             <p className="footer-description">
               {currentLang === 'am' 
-                ? 'የጤና፣ ስፖርት እና ምግብ ብሎግ'
+                ? 'የጤናና ውበት፣ ስፖርት እና ምግብ አሰራር ብሎግ'
                 : 'Health and Beauty, Sports News & Food Preparation Blog'
               }
             </p>

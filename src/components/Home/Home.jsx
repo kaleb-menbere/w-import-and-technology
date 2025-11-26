@@ -108,16 +108,6 @@ function Home() {
           <p className="hero-subtitle">
             {t('heroSubtitle')}
           </p>
-          <div className="hero-search">
-            <input 
-              type="text" 
-              placeholder={t('searchPlaceholder')} 
-              className="search-input"
-            />
-            <button className="search-btn">
-              {t('search')}
-            </button>
-          </div>
         </div>
         <div className="hero-images-grid">
           <div className="hero-image-item">

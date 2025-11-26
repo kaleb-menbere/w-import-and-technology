@@ -21,6 +21,9 @@ export const LanguageProvider = ({ children }) => {
   const translations = {
     en: {
       home: "Home",
+      health: "Health",
+      sports: "Sports",
+      food: "Food",
       heroSubtitle: "Your daily source for food recipes, sports updates, and health & beauty advice",
       Category: "Category",
       myAccount: "My Account",
@@ -53,7 +56,7 @@ export const LanguageProvider = ({ children }) => {
       ruleChangesTitle: "5. Rule Changes and Notification",
       ruleChangesContent: "Participants will be promptly notified of any rule changes.",
       contactInfoTitle: "6. Contact Information",
-      contactInfoContent: "If you have questions or concerns about our services, contact amhagroupcontact@gmail.com",
+      contactInfoContent: "If you have questions or concerns about our services, contact amhagroupcontact@gmail.com or 0116166969",
       closingMessage: "Thank you for using W Import and Technology!",
       backButton: "Back to Home",
 
@@ -105,10 +108,10 @@ export const LanguageProvider = ({ children }) => {
       foodPreparation: 'Food & Recipes',
       // Subcategories
       beautyTips: 'Beauty Tips',
-      healthAdvice: 'Health Advice',
-      foreignSports: 'International Sports',
+      healthAdvice: 'Health and Beauty Advice',
+      foreignSports: 'International and Local Sports',
       localSports: 'Local Sports',
-      ethiopianFood: 'Ethiopian Traditional',
+      ethiopianFood: 'Ethiopian Traditional and International',
       foreignFood: 'International Cuisine',
       
       // Homepage Translations
@@ -192,7 +195,10 @@ export const LanguageProvider = ({ children }) => {
     },
     am: {
       home: "ዋና ገፅ",
-      heroSubtitle: "የዕለት ተዕለት ምግብ አሰራር፣ የስፖርት ዝመና እና የጤና እና ውበት ምክሮች ምንጭዎ",
+      health: "ጤና",
+      sports: "ስፖርት",
+      food: "ምግብ",
+      heroSubtitle: "የዕለት ተዕለት ምግብ አሰራር፣ የስፖርት ዜና እና የጤና እና ውበት ምክሮች ምንጭዎ",
       Category: "የጨዋታ ምድብ",
       myAccount: "መለያ",
       logout: "ውጣ",
@@ -207,10 +213,10 @@ export const LanguageProvider = ({ children }) => {
       welcomeContent1: "እነዚህ ውሎች እና ሁኔታዎች ድርጅታችንን እና አገልግሎቶቹን ",
       welcomeContent2:" እንዴት እንደምትጠቀሙ ይመራሉ። እባክዎ በጥንቃቄ ያንብቡ፡፡",
       userRegistrationTitle: "2. የተጠቃሚ ምዝገባ እና ብቁነት",
-      userRegistrationContent: "ጨዋታዎችን ለመጠቀም ተጠቃሚዎች ትክክለኛ መረጃ ማስገባት ይኖርባቸዋል።",
+      userRegistrationContent: "ድህረ ገጽን ለመጠቀም ተጠቃሚዎች ትክክለኛ መረጃ ማስገባት ይኖርባቸዋል።",
       subscriptionTitle: "3. የምዝገባ ዝርዝሮች",
-      subscriptionContent1: "ጨዋታዎች የመመዝገቢያ ጥቅል ይፈልጋሉ። 3 ቀን ነፃ ሙከራ ይገኛል።",
-      subscriptionContent2: "ከሙከራ ጊዜው በኋላ ምዝገባዎ በራስ-ሰር ይታደሳል።",
+      subscriptionContent1: "ድህረ ገጽን የመመዝገቢያ ጥቅል ይፈልጋሉ። 3 ቀን ነፃ ሙከራ ይገኛል።",
+      subscriptionContent2: "ከሙከራ ጊዜው በኋላ ምዝገባዎ በራስ-ስር ይታደሳል።",
       subscriptionPackages: "የእኛ የደንበኝነት ምዝገባ ጥቅል፦",
       dailyPackage: "በቀን 2 ብር",
       paymentInfo: "ክፍያ በኢትዮ ቴሌኮም ተፈጻሚ ነው።",
@@ -218,12 +224,12 @@ export const LanguageProvider = ({ children }) => {
       unsubscribeInstruction: "ለመሰረዝ፡ 'STOP' ወደ 9735 ይላኩ",
       shortcodeInfo: "የመስጫ ኮድ፡ 9735",
       technicalRequirementsTitle: "4. ቴክኒክ መስፈርቶች",
-      technicalRequirementsContent1: "ተጫዋቾች የዲቫይስ እና የኢንተርኔት መስፈርቶችን ማሟላት አለባቸው።",
-      technicalRequirementsContent2: "ችግሮች ጨዋታውን ሊያቋርጡ ወይም ሊዘገዩ ይችላሉ።",
+      technicalRequirementsContent1: "ተጠቃሚው የዲቫይስ እና የኢንተርኔት መስፈርቶችን ማሟላት አለባቸው።",
+      technicalRequirementsContent2: "ችግሮች ድህረ ገጽን ሊያቋርጡ ወይም ሊያዘገዩ ይችላሉ።",
       ruleChangesTitle: "5. የህግ ለውጦች",
       ruleChangesContent: "ማንኛውም ለውጥ በአፋጣኝ ይገለጻል።",
       contactInfoTitle: "6. የግንኙነት መረጃ",
-      contactInfoContent: "ጥያቄ ካለዎት በ amhagroupcontact@gmail.com ያግኙ።",
+      contactInfoContent: "ጥያቄ ካለዎት በ amhagroupcontact@gmail.com ወይም 0116166969 ያግኙን።",
       closingMessage: "እኛን ስለተጠቀሙ እናመሰግናለን!",
       backButton: "ወደ መነሻ ተመለስ",
 
@@ -275,11 +281,11 @@ export const LanguageProvider = ({ children }) => {
       foodPreparation: 'ምግብ አሰራር',
       // Subcategories in Amharic
       beautyTips: 'ውበት ምክሮች',
-      healthAdvice: 'ጤና ምክሮች',
-      foreignSports: 'የውጭ ስፖርት',
-      localSports: 'የአገር ውስጥ ስፖርት',
-      ethiopianFood: 'ባህላዊ ምግብ',
-      foreignFood: 'የውጭ ምግብ',
+      healthAdvice: 'ጤናና የውበት ምክሮች',
+      foreignSports: 'የውጭና የአገር ስፖርት',
+      localSports: 'የውጭና የአገር ውስጥ ስፖርት',
+      ethiopianFood: 'ባህላዊና የውጭ ምግብ',
+      foreignFood: 'ባህላዊና የውጭ ምግብ',
       
       // Homepage Translations
       searchPlaceholder: 'ጽሑፎችን ይፈልጉ...',
